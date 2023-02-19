@@ -1,0 +1,259 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>bikroy.com</title>
+    <link rel="shortcut icon" href="{% static 'img/title_icon.ico' %}">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css'%}">
+    <link rel="stylesheet" href="{% static 'css/customFooterLinks.css'%}">
+</head>
+<body>
+    <!-- navigation bar start -->
+    <div>
+        <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+            <a class="navbar-brand"  href='home' style="margin-left: 200px"><img src="{% static 'img/bikroy-com-logo.png' %}" alt="bikroy.com"></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <a class="nav-link text-light" href='all_ads'>All ads</a>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                {% if username %}
+                <ul class="navbar-nav ml-auto" style="margin-right: 105px">
+                {% else %}
+                <ul class="navbar-nav ml-auto" style="margin-right: 200px">
+                {% endif %}
+                    <li class="nav-item">
+                        <a class="nav-link text-light mr-3" href='chat'>chat</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-light mr-3" href='my_account_page'>
+                            {% if username %}
+                            My Account
+                            {% else %}
+                            Log In
+                            {% endif %}
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link btn shadow-sm rounded text-dark post-ad-btn" href='post_ad'>POST YOUR AD</a>
+                    </li>
+                </ul>
+            </div>
+
+            {% if username %}
+            <a class="nav-link text-light" href='signout'>Sign out</a>
+            {% endif %}
+
+        </nav>
+    </div>
+
+    <!-- navigation bar end -->
+
+    <div style="margin-top: 70px"></div>
+
+    <!-- body content start -->
+    <div class="container border rounded shadow-sm py-5 px-5 body-content">
+	  	<div class="ui-panel marketing promo is-rounded">
+            <div class="ui-panel-content ui-panel-block">
+                <h1 class="title">Promote your ad and sell fast on Bikroy.com - the largest marketplace in Bangladesh</h1>
+                <div class="intro">
+                    <div class="push is-island">
+                        <img width="500" height="400" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" srcset="https://w.bikroy-st.com/dist/img/bikroy/all/marketing/promotions/devices-a2fb52e6.jpg 1x, https://w.bikroy-st.com/dist/img/bikroy/all/marketing/promotions/devices-2x-f3079c08.jpg 1.3x">
+                    </div>
+                    <p class="h2">A popular marketplace like Bikroy.com has thousands of buyers and sellers - so how can you make your ad stand out?</p>
+                    <p>While the basic service of posting an ad remains free on Bikroy.com, we now offer extra paid options for our posters who want to <strong>stand out</strong> and <strong>reach more interested buyers</strong> quickly and easily.</p>
+                    <p><strong>Need to sell urgently?</strong><br>Our promotions are an excellent way to get your items sold quickly!</p>
+                    <p>To promote an ad, simply:</p>
+                    <ul>
+                        <li>post an ad and click the "Promote your ad" button on the last page, or</li>
+                        <li>go to an ad you have already posted and click the "Promote ad" option.</li>
+                    </ul>
+                </div>
+                <ul class="bullets row">
+                    <li class="car lg-6"><img width="103" height="86" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" srcset="https://w.bikroy-st.com/dist/img/all/marketing/promotions/car-a8286ef5.png 1x, https://w.bikroy-st.com/dist/img/all/marketing/promotions/car-2x-52d48efc.png 1.3x">
+                        <div class="text">
+                            <h4 class="heading">Get more views</h4>
+                            <p>Our promotions are designed to get more people to see your ad. So by promoting your ad, you save time and effort - and still get more replies to your ad.</p>
+                        </div>
+                    </li>
+                    <li class="chart lg-6"><img class="t-center" width="108" height="97" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" srcset="https://w.bikroy-st.com/dist/img/all/marketing/promotions/chart-0bf67fd7.png 1x, https://w.bikroy-st.com/dist/img/all/marketing/promotions/chart-2x-34a7b932.png 1.3x">
+                        <div class="text">
+                            <h4 class="heading">Sell fast for a good price</h4>
+                            <p>More replies means more interested buyers. With lots of interested buyers, you have a better chance of selling for the price that you want.</p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <hr class="ui-divider sm-panel-wide xs-panel-wide">
+            <div class="products">
+                <h1 class="section-heading break">Our Ad Promotions</h1>
+                <div id="p-topad" class="row product">
+                    <div class="col-12">
+                        <h2 class="title">
+                            <img width="72" height="72" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" srcset="https://w.bikroy-st.com/dist/img/all/products/72/topad-1x-aedf174f.png 1x, https://w.bikroy-st.com/dist/img/all/products/72/topad-2x-140dcca8.png 1.3x">
+                            <span>Top Ad</span>
+                        </h2>
+                    </div>
+                    <div class="col-12 info">
+                        <div class="push is-island">
+                            <img width="520" height="300" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" srcset="https://w.bikroy-st.com/dist/img/all/marketing/promotions/top/desktop-f8b008af.png 1x, https://w.bikroy-st.com/dist/img/all/marketing/promotions/top/desktop-2x-0d3bd859.png 1.3x">
+                        </div>
+                        <p>At the top of every ad listing page, there are up to 2 spots reserved for Top Ads. By adding a Top Ad promotion to your ad, you earn the chance for your ad to be displayed in one of these Top Ad spots - which can get you up to 10 times or more views!</p>
+                        <ul>
+                            <li><p>Top Ads stand out - they are bigger than regular ads, highlighted in yellow, and clearly marked as a "Top Ad".</p></li>
+                            <li><p>Each Top Ad is given an equal chance of being shown in the Top Ad spots. This means thousands of extra appearances for each Top Ad on our most-viewed pages - every day, for up to 15 days.</p></li>
+                            <li><p>In addition to joining the Top Ad list, your ad is also posted as a regular ad. So you can add a Daily Bump Up promotion to your regular ad too.</p></li>
+                        </ul>
+                    </div>
+                </div><hr class="is-xl">
+                <div id="p-bumpup" class="row product">
+                    <div class="col-12">
+                        <h2 class="title">
+                            <img width="72" height="72" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" srcset="https://w.bikroy-st.com/dist/img/all/products/72/bumpup-1x-6ebd9555.png 1x, https://w.bikroy-st.com/dist/img/all/products/72/bumpup-2x-145f509e.png 1.3x">
+                            <span>Daily Bump Up</span>
+                        </h2>
+                    </div>
+                    <div class="col-12 info">
+                        <div class="push is-island">
+                            <img width="520" height="300" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" srcset="https://w.bikroy-st.com/dist/img/all/marketing/promotions/bump/desktop-42940dc2.png 1x, https://w.bikroy-st.com/dist/img/all/marketing/promotions/bump/desktop-2x-e98b7164.png 1.3x">
+                        </div>
+                        <p>The Daily Bump Up promotion moves your ad to the top of the regular ad listings once a day for up to 15 days. It has the same effect as reposting your ad every day - but it's automatic and attracts 5 times or more views!</p>
+                        <ul>
+                            <li><p>Ads with Daily Bump Up are given a fresh start once a day, to get your ad more views with no extra effort.</p></li>
+                            <li><p>Ads move down the pages as usual until the next bump up, and this is repeated for up to 15 days.</p></li>
+                        </ul>
+                    </div>
+                </div>
+                <hr class="is-xl">
+                <div id="p-urgentad" class="row product">
+                    <div class="col-12">
+                        <h2 class="title">
+                            <img width="72" height="72" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" srcset="https://w.bikroy-st.com/dist/img/all/urgent-filter/72/en-f74bcadc.png 1x, https://w.bikroy-st.com/dist/img/all/urgent-filter/72/en-2x-454ad447.png 1.3x">
+                            <span>Urgent Ad</span>
+                        </h2>
+                    </div>
+                    <div class="col-12 info">
+                        <div class="push is-island">
+                            <img width="520" height="300" srcset="https://w.bikroy-st.com/dist/img/all/marketing/promotions/urgent/desktop-391f480e.png 1x, https://w.bikroy-st.com/dist/img/all/marketing/promotions/urgent/desktop-2x-bc32702f.png 1.3x">
+                        </div>
+                        <p>Want to sell quickly? The URGENT promotion helps your ad stand out from the rest and communicates your urgency to potential buyers who are looking for a great deal.</p>
+                        <ul>
+                            <li><p>URGENT ads stand out from the rest by showing a bright red marker on the ad</p></li>
+                            <li><p>Combine this promotion with a Top Ad or Bump Up to ensure your ad stays on top of regular listings and gets up to 10 times more views.</p></li>
+                            <li><p>Buyers can easily find your ad by applying the URGENT filter.</p></li>
+                        </ul>
+                    </div>
+                </div>
+                <hr class="is-xl">
+                <div id="p-spotlight" class="row product">
+                    <div class="col-12">
+                        <h2 class="title">
+                            <img width="72" height="72" srcset="https://w.bikroy-st.com/dist/img/all/products/72/spotlight-1x-af9a4c51.png 1x, https://w.bikroy-st.com/dist/img/all/products/72/spotlight-2x-dd99a751.png 1.3x">
+                            <span>Spotlight</span>
+                        </h2>
+                    </div>
+                    <div class="col-12 info">
+                        <div class="push is-island">
+                            <img width="520" height="300" srcset="https://w.bikroy-st.com/dist/img/all/marketing/promotions/spotlight/desktop-701341a6.png 1x, https://w.bikroy-st.com/dist/img/all/marketing/promotions/spotlight/desktop-2x-bf08b5fc.png 1.3x">
+                        </div>
+                        <p>Spotlight is a premium spot for showcasing your high-value items and getting immediate attention from buyers on Bikroy. To get the most value out of this promotion, make sure you add great-looking photos while posting your ad.</p>
+                        <ul>
+                            <li><p>Spotlight ads are visually appealing - with big images and clean design to attract more views.</p></li>
+                            <li><p>Each Spotlight ad is given an equal chance of being shown in this premium spot, with 5 ads being shown automatically to every user.</p></li>
+                            <li><p>In addition to Spotlight, your ad is also posted as a regular ad. So you can add other promotions to your regular ad too.</p></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    <!-- body content end -->
+
+    <div style="height: 10rem"></div>
+
+    <!-- footer start -->
+    <footer class="footer mt-auto py-3">
+        <div class="container">
+            <div class="row">
+                <nav class="col-sm">
+                    <p class="h5">Learn More</p>
+                    <ul>
+                        <li class="nav-link">
+                            <a href="sell_fast">How to sell fast</a>
+                        </li>
+                        <li class="nav-link">
+                            <a href="membership">Membership</a>
+                        </li>
+                        <li class="nav-link">
+                            <a href="banner">Banner Advertising</a>
+                        </li>
+                        <li class="nav-link">
+                            <a href="promote_ad">Promote your ad</a>
+                        </li>
+                    </ul>
+                </nav>
+                <nav class="col-sm">
+                    <p class="h5">Help & Support</p>
+                    <ul>
+                        <li class="nav-link">
+                            <a href="faq">FAQ</a>
+                        </li>
+                        <li class="nav-link">
+                            <a href="stay_safe">Stay safe on Bikroy.com</a>
+                        </li>
+                        <li class="nav-link">
+                            <a href="contact_us">Contact us</a>
+                        </li>
+                    </ul>
+                </nav>
+                <nav class="col-sm">
+                    <p class="h5">Social</p>
+                    <ul>
+                        <li class="nav-link">
+                            <a href="http://blog.bikroy.com/" rel="nofollow" target="_blank">Blog</a>
+                        </li>
+                        <li class="nav-link">
+                            <a href="https://www.facebook.com/bikroy" rel="nofollow" target="_blank">Facebook</a>
+                        </li>
+                        <li class="nav-link">
+                            <a href="https://twitter.com/bikroy_com" rel="nofollow" target="_blank">Twitter</a>
+                        </li>
+                        <li class="nav-link">
+                            <a href="http://www.youtube.com/user/BikroyBD" rel="nofollow" target="_blank">YouTube</a>
+                        </li>
+                    </ul>
+                </nav>
+                <nav class="col-sm">
+                    <p class="h5">About us</p>
+                    <ul>
+                        <li class="nav-link">
+                            <a href="about_us">About us</a>
+                        </li>
+                        <li class="nav-link">
+                            <a href="https://bikroy.com/en/shops/careers">Careers</a>
+                        </li>
+                        <li class="nav-link">
+                            <a href="terms_cond">Terms & Conditions</a>
+                        </li>
+                        <li class="nav-link">
+                            <a href="privacy">Privacy Policy</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </footer>
+
+    <!-- footer end -->
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'js/customMyAccountPage.js' %}"></script>
+</body>
+</html>

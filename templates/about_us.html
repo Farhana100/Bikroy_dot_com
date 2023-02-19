@@ -1,0 +1,190 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>bikroy.com</title>
+    <link rel="shortcut icon" href="{% static 'img/title_icon.ico' %}">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css'%}">
+    <link rel="stylesheet" href="{% static 'css/customFooterLinks.css'%}">
+</head>
+<body>
+    <!-- navigation bar start -->
+    <div>
+        <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+            <a class="navbar-brand"  href='home' style="margin-left: 200px"><img src="{% static 'img/bikroy-com-logo.png' %}" alt="bikroy.com"></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <a class="nav-link text-light" href='all_ads'>All ads</a>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                {% if username %}
+                <ul class="navbar-nav ml-auto" style="margin-right: 105px">
+                {% else %}
+                <ul class="navbar-nav ml-auto" style="margin-right: 200px">
+                {% endif %}
+                    <li class="nav-item">
+                        <a class="nav-link text-light mr-3" href='chat'>chat</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-light mr-3" href='my_account_page'>
+                            {% if username %}
+                            My Account
+                            {% else %}
+                            Log In
+                            {% endif %}
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link btn shadow-sm rounded text-dark post-ad-btn" href='post_ad'>POST YOUR AD</a>
+                    </li>
+                </ul>
+            </div>
+
+            {% if username %}
+            <a class="nav-link text-light" href='signout'>Sign out</a>
+            {% endif %}
+
+        </nav>
+    </div>
+
+    <!-- navigation bar end -->
+
+    <div style="margin-top: 70px"></div>
+
+    <!-- body content start -->
+    <div class="container border rounded shadow-sm py-5 px-5 body-content">
+	  	<div class="container main">
+            <div class="ui-panel no-pad is-rounded">
+                <div class="ui-panel-content ui-panel-block">
+                    <div class="row"><div class="col-12">
+                        <div class="help-header">
+                            <p class="h1 title t-center">Welcome to Bikroy.com's Help &amp; Support page</p>
+                            <p class="t-center">Here you can find answers to our most frequently asked questions and learn about Bikroy.com, how to use it, how to stay safe and get in touch with us.</p>
+                            <div class="buoy">
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            <div class="row lg-g">
+                <div class="col-12 lg-4">
+                    <div class="row">
+                        <div class="col-12 lg-9 lg-offset-2 help-nav">
+                            <nav class="stacked">
+                                <ul>
+                                    <li class="nav-item"><a href="/en/help/faq#help-content"><svg class="ui-icon i-arrow-r"><use xlink:href="#i-arrow-r"></use></svg>FAQ</a></li>
+                                    <li class="nav-item"><a href="/en/help/sell-fast#help-content"><svg class="ui-icon i-arrow-r"><use xlink:href="#i-arrow-r"></use></svg>How to sell fast</a></li>
+                                    <li class="nav-item"><a href="/en/help/stay-safe#help-content"><svg class="ui-icon i-arrow-r"><use xlink:href="#i-arrow-r"></use></svg>Stay safe on Bikroy.com</a></li>
+                                    <li class="nav-item"><a href="/en/help/contact#help-content"><svg class="ui-icon i-arrow-r"><use xlink:href="#i-arrow-r"></use></svg>Contact us</a></li>
+                                    <li class="nav-item is-active"><a href="/en/help/about#help-content"><svg class="ui-icon i-arrow-r"><use xlink:href="#i-arrow-r"></use></svg>About us</a></li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 lg-8">
+                    <div class="row">
+                        <div class="col-12 lg-11 help-content">
+                            <h1 class="h2">What is Bikroy.com?</h1>
+                                <p>Bikroy.com is a website where you can buy and sell almost everything. The best deals are often done with people who live in your own city or on your own street, so on Bikroy.com it's easy to buy and sell locally. All you have to do is select your region.</p>
+                                <p>It takes you less than 2 minutes to post an ad on Bikroy.com. You can sign up for a free account and post ads easily every time.</p>
+                                <p>Bikroy.com has the widest selection of popular second hand items all over Bangladesh, which makes it easy to find exactly what you are looking for. So if you're looking for a car, mobile phone, house, computer or maybe a pet, you will find the best deal on Bikroy.com.</p>
+                                <p>Bikroy.com does not specialize in any specific category - here you can buy and sell items in more than 50 different categories. We also carefully review all ads that are being published, to make sure the quality is up to our standards.</p>
+                                <p>If you'd like to get in touch with us, go to <a href="/en/help/contact#help-content">Contact us</a>.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    </div>
+    <!-- body content end -->
+
+    <div style="height: 10rem"></div>
+
+    <!-- footer start -->
+    <footer class="footer mt-auto py-3">
+        <div class="container">
+            <div class="row">
+                <nav class="col-sm">
+                    <p class="h5">Learn More</p>
+                    <ul>
+                        <li class="nav-link">
+                            <a href="sell_fast">How to sell fast</a>
+                        </li>
+                        <li class="nav-link">
+                            <a href="membership">Membership</a>
+                        </li>
+                        <li class="nav-link">
+                            <a href="banner">Banner Advertising</a>
+                        </li>
+                        <li class="nav-link">
+                            <a href="promote_ad">Promote your ad</a>
+                        </li>
+                    </ul>
+                </nav>
+                <nav class="col-sm">
+                    <p class="h5">Help & Support</p>
+                    <ul>
+                        <li class="nav-link">
+                            <a href="faq">FAQ</a>
+                        </li>
+                        <li class="nav-link">
+                            <a href="stay_safe">Stay safe on Bikroy.com</a>
+                        </li>
+                        <li class="nav-link">
+                            <a href="contact_us">Contact us</a>
+                        </li>
+                    </ul>
+                </nav>
+                <nav class="col-sm">
+                    <p class="h5">Social</p>
+                    <ul>
+                        <li class="nav-link">
+                            <a href="http://blog.bikroy.com/" rel="nofollow" target="_blank">Blog</a>
+                        </li>
+                        <li class="nav-link">
+                            <a href="https://www.facebook.com/bikroy" rel="nofollow" target="_blank">Facebook</a>
+                        </li>
+                        <li class="nav-link">
+                            <a href="https://twitter.com/bikroy_com" rel="nofollow" target="_blank">Twitter</a>
+                        </li>
+                        <li class="nav-link">
+                            <a href="http://www.youtube.com/user/BikroyBD" rel="nofollow" target="_blank">YouTube</a>
+                        </li>
+                    </ul>
+                </nav>
+                <nav class="col-sm">
+                    <p class="h5">About us</p>
+                    <ul>
+                        <li class="nav-link">
+                            <a href="about_us">About us</a>
+                        </li>
+                        <li class="nav-link">
+                            <a href="https://bikroy.com/en/shops/careers">Careers</a>
+                        </li>
+                        <li class="nav-link">
+                            <a href="terms_cond">Terms & Conditions</a>
+                        </li>
+                        <li class="nav-link">
+                            <a href="privacy">Privacy Policy</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </footer>
+
+    <!-- footer end -->
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'js/customMyAccountPage.js' %}"></script>
+</body>
+</html>

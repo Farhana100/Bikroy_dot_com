@@ -1,0 +1,14 @@
+{% for msg_id, msg, time, sender_id, rec_id in messages %}
+    <label id="msg_id_label" hidden>{{ msg_id }}</label>
+    {% if sender_id == user_id %}
+        <div class="text-right">
+            <span class="badge badge-pill" style="background-color: #98CDC0;"><label class="p-2 text-wrap text-dark" style="font: 15px Arial, sans-serif;">{{msg}}</label></span>
+            <div class="text-sm-right"><small>{{ time }}</small></div>
+        </div>
+    {% else %}
+        <div class="text-left">
+            <span class="badge badge-pill badge-secondary"><label class="p-2 text-wrap" style="font: 15px Arial, sans-serif;">{{msg}}</label></span>
+            <div class="text-sm-left"><small>{{ time }}</small></div>
+        </div>
+    {% endif %}
+{% endfor %}

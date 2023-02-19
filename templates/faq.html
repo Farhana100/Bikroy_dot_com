@@ -1,0 +1,288 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>bikroy.com</title>
+    <link rel="shortcut icon" href="{% static 'img/title_icon.ico' %}">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css'%}">
+    <link rel="stylesheet" href="{% static 'css/customFooterLinks.css'%}">
+</head>
+<body>
+    <!-- navigation bar start -->
+    <div>
+        <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+            <a class="navbar-brand"  href='home' style="margin-left: 200px"><img src="{% static 'img/bikroy-com-logo.png' %}" alt="bikroy.com"></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <a class="nav-link text-light" href='all_ads'>All ads</a>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                {% if username %}
+                <ul class="navbar-nav ml-auto" style="margin-right: 105px">
+                {% else %}
+                <ul class="navbar-nav ml-auto" style="margin-right: 200px">
+                {% endif %}
+                    <li class="nav-item">
+                        <a class="nav-link text-light mr-3" href='chat'>chat</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-light mr-3" href='my_account_page'>
+                            {% if username %}
+                            My Account
+                            {% else %}
+                            Log In
+                            {% endif %}
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link btn shadow-sm rounded text-dark post-ad-btn" href='post_ad'>POST YOUR AD</a>
+                    </li>
+                </ul>
+            </div>
+
+            {% if username %}
+            <a class="nav-link text-light" href='signout'>Sign out</a>
+            {% endif %}
+
+        </nav>
+    </div>
+
+    <!-- navigation bar end -->
+
+    <div style="margin-top: 70px"></div>
+
+    <!-- body content start -->
+    <div class="container border rounded shadow-sm py-5 px-5 body-content">
+	  	<div class="app-content" style="cursor: default;">
+            <div class="container main">
+                <div class="ui-panel no-pad is-rounded">
+                    <div class="ui-panel-content ui-panel-block">
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="help-header">
+                                    <p class="h1 title t-center">Welcome to Bikroy.com's Help &amp; Support page</p>
+                                    <p class="t-center">Here you can find answers to our most frequently asked questions and learn about Bikroy.com, how to use it, how to stay safe and get in touch with us.</p>
+                                    <div class="buoy">
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row lg-g">
+                            <div class="col-12 lg-4">
+                                <div class="row">
+                                    <div class="col-12 lg-9 lg-offset-2 help-nav">
+                                        <nav class="stacked">
+                                            <ul>
+                                                <li class="nav-item"><a href="sell_fast">How to sell fast</a></li>
+                                                <li class="nav-item"><a href="stay_safe">Stay safe on Bikroy.com</a></li>
+                                                <li class="nav-item"><a href="contact_us">Contact us</a></li>
+                                                <li class="nav-item"><a href="about_us">About us</a></li>
+                                            </ul>
+                                        </nav>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12 lg-8">
+                                <div class="row">
+                                    <div class="col-12 lg-11 help-content">
+                                        <div class="answers">
+                                            <h1 class="h2">FAQ</h1>
+                                            <dl class="faq"><dt id="faq-general-1" class=""><a href="#faq-general-1"><span class="num">1. </span>
+                                                <span class="text">How do I post an ad?</span>
+                                            </a>
+                                            </dt>
+                                            <dd>
+                                                <p>Posting an ad on Bikroy.com is quick and easy! Simply click the yellow  <a href="/en/post-ad">Post Ad</a> button and follow the instructions.</p>
+                                                <p>If you are not already logged in, you will need to log in as the first step of posting your ad.</p>
+                                                <p>Your ad will go live once it has been reviewed.</p>
+                                            </dd>
+                                        <dt id="faq-general-2"><a href="#faq-general-2"><span class="num">2. </span><span class="text">How do I delete my ad?</span><div class="icon"><div class="rotate"><svg class="ui-icon i-arrow-d"><use xlink:href="#i-arrow-d"></use></svg></div></div></a></dt><dd><p>To delete an ad, please go to your ad's page and click on the "Delete ad" option.</p>
+                                            <p>Tip: you can find your ad easily by logging in to your account and visiting your "My ads" page!</p>
+                                    </dd>
+                                <dt id="faq-general-3"><a href="#faq-general-3"><span class="num">3. </span><span class="text">How do I edit my ad?</span><div class="icon"><div class="rotate"><svg class="ui-icon i-arrow-d"><use xlink:href="#i-arrow-d"></use></svg></div></div></a></dt><dd><p>To edit an ad, please go to your ad's page and click on the "Edit ad" option.</p>
+                                    <p>Tip: you can find your ad easily by logging in to your account and visiting your "My ads" page!</p>
+                                    </dd><dt id="faq-general-4"><a href="#faq-general-4"><span class="num">4. </span><span class="text">How do I set a new password on Bikroy.com?</span><div class="icon"><div class="rotate"><svg class="ui-icon i-arrow-d"><use xlink:href="#i-arrow-d"></use></svg></div></div></a></dt><dd><p>To set a new Bikroy.com password, please log in to your account, go to the "Settings" page and enter a new password.</p>
+                                    <p>If you have forgotten your Bikroy.com password, you can:</p>
+                                <ul>
+                                    <li>go to the log-in page and click on the "Forgot your password?" link</li>
+                                    <li>go to one of your ads, click on "Edit ad" or "Delete ad", and click on the "Forgot your password?" link.</li>
+                                </ul>
+                                    <p>If you have created an account via Facebook, you will not have a Bikroy.com password. You can log in to your account via Facebook without a password.</p>
+                                    <span class="num">5. </span><span class="text">How long do ads stay on Bikroy.com?</span><p>Ads appear for 60 days, unless you delete them earlier.</p>
+                                    <span class="num">6. </span><span class="text">I posted an ad but can't find it. What's wrong?</span><div class="icon"><div class="rotate"><svg class="ui-icon i-arrow-d"><use xlink:href="#i-arrow-d"></use></svg></div></div></a></dt><dd><p>Tip: you can keep track of your ads easily by logging in to your account and visiting your "My ads" page!</p>
+                                    <p>Your ad may not be live due to one of the following reasons:<br>• It is still under review - this will show on your My Ads page, under “Ads under review”<br>• It may have it violated our posting rules - if your ad needs to be edited before it can be published, this will show on your My Ads page, under “Ads that need editing”<br>• You have used up your free ad allowance</p>
+                                    <p>If you have been waiting longer than 24 hours for a response from us, you may have given us the wrong contact details when you posted the ad. Try posting again or <a href="/en/help/contact">contact us</a>.</p>
+                                    <span class="num">7. </span><span class="text">Why has my ad been rejected?</span><div class="icon"><div class="rotate"><p>All of the ads are manually reviewed - if your ad violates our <a href="#faq-general-11">posting rules</a> it will be rejected. You can read what changes you have to make before the ad can be approved in the rejection email.</p>
+                                    <span class="num">8. </span><span class="text">I'm getting contacted about an ad I didn't post. Can you help me?</span><div class="icon"><p>Of course. Please <a href="/en/help/contact">contact us</a> and we will help you right away.</p>
+                                    <span class="num">9. </span><span class="text">I haven't received any responses to my ad. What's wrong?</span><p>If you are not receiving responses to our ads, we recommend taking a look at our tips on <a href="/en/help/sell-fast">how to sell fast</a>.</p>
+                                    <span class="num">10. </span><span class="text">How does Bikroy.com make money?</span><p>Bikroy.com offers paid features and services that help people promote their ads, facilitate the sales of advertised items, and give businesses a bigger online presence.</p>
+                                    <p>These currently include <a href="promote_ad">ad promotions</a>, <a href="membership">Bikroy.com Membership</a></p>
+                                    <span class="num">11. </span><span class="text">What are the rules for posting on Bikroy.com?</span><p>We don't allow ads that contain: </p>
+                                             <ul>
+                                                <li>an item or service that is illegal in Bangladesh</li>
+                                                <li>an item or service that is not located in Bangladesh </li>
+                                                <li>an invalid phone number or email address</li>
+                                                <li>an unrealistic offer</li>
+                                                <li>offensive language</li>
+                                                <li>offensive pictures</li>
+                                                <li>text in the title or description that is not related to the advertised item or service</li>
+                                                <li>pictures that do not match or clearly show the advertised item or service</li>
+                                                <li>text in the first picture (except logos and product codes)</li>
+                                                <li>a non-specific item or service, e.g. a description of a company in general terms </li>
+                                                <li>a URL link that is not relevant to the advertised item or service </li>
+                                                <li>offers and requests for items or services in the same ad </li>
+                                                <li>exact same content as another ad, re-published within 7 days.</li>
+                                                <li>multiple items in the same ad</li>
+                                                <li>“work from home" jobs</li>
+                                                <li>counterfeit goods, knockoffs or replica versions of another company’s product</li>
+                                                <li>In addition, once the ad is posted, the product or service in the ad cannot be changed.</li>
+                                             </ul>
+                                                </dd><dt id="faq-general-12"><a href="#faq-general-12"><span class="num">12. </span><span class="text">How do I sign up for a user account on Bikroy.com?</span><p>Signing up for an account on Bikroy.com is quick, easy and completely free! To sign up on Bikroy.com, please go to the <a href="/en/users/signup">Sign up</a> page and follow the instructions. You can sign up with an email address or through your Facebook account.</p>
+                                                <p>Once you have signed up, a link will be sent to your email with instructions on how to verify your email address.</p>
+                                                </dd><dt id="faq-general-13"><a href="#faq-general-13"><span class="num">13. </span><span class="text">How do I log in and log out of my account?</span><p>To log in to your account, simply go to the Log in page and enter your email and Bikroy.com password. If you have created an account via Facebook, click on "Continue with Facebook" and follow the instructions.</p>
+                                                <p>To log out of your account, simply click the "Log out" option.</p>
+                                                </dd><dt id="faq-general-14"><a href="#faq-general-14"><span class="num">14. </span><span class="text">How do I change my account details?</span><p>To change the details on your account, log in to your account and go to your account's "Settings" page.</p>
+                                                </dd><dt id="faq-general-15"><a href="#faq-general-15"><span class="num">15. </span><span class="text">Why can't I log in to my account?</span><p>If you are having trouble logging in to your account, please check that you have:</p>
+                                            <ul>
+                                                <li><a href="#faq-general-12">Signed up for an account</a>.</li>
+                                                <li>Entered the correct email address and password on the log in page.</li>
+                                            </ul>
+                                                    <p>If you are still having trouble accessing your account, please <a href="/en/help/contact">contact us</a>.</p>
+                                                    <span class="num">16. </span><span class="text">What is my free posting allowance?</span><p>Every month, you can post up to a set number of items for free on Bikroy.com. Once you have used up this free ad allowance for the month, you can either set up a Membership in order to post more ads, or wait until the first day of the next month when your free ad allowance gets reset.</p>
+                                                    <span class="num">17. </span><span class="text">How can I start chatting with someone?</span><p>To start a chat, go to an ad and click the <code>Chat</code> option. This will open a private chat between you and the ad poster.</p>
+                                                    <span class="num">19. </span><span class="text">How can I receive chat messages?</span><p>To read your chat messages, click the chat icon at the top right of the screen and go to <code>Chats</code> page.</p>
+                                                    <h2>Paid products and services Q&amp;A</h2><dl class="faq"><dt id="faq-products-1"><a href="#faq-products-1"><span class="num">1. </span><span class="text">What is "Top Ad"?</span><p>To learn all about Top Ads, please visit our <a href="/en/promotions">Promote your ad</a> page. You can also click "Learn more" under the Top Ad option after you click the "Promote ad" option on your ad.</p>
+                                                   <span class="num">2. </span><span class="text">Why is my ad not showing as a Top Ad?</span><div class="icon"><div class="rotate"><svg class="ui-icon i-arrow-d"><use xlink:href="#i-arrow-d"></use></svg></div></div></a></dt><dd><p>If you don't see your Top Ad right away, it means that there are more Top Ads available than there are number of Top Ad spots. In this case, each Top Ad is given an equal chance of being displayed. </p>
+                                                    <p>To see your Top Ad in action, you can try the following:</p>
+                                            <ul>
+                                                <li>Go to the category and location that you posted the ad in and select any relevant filters.</li>
+                                                <li>Click through to the next few pages, or refresh your page to browse different Top Ads.</li>
+                                            </ul>
+                                            </dd><dt id="faq-products-3"><a href="#faq-products-3"><span class="num">3. </span><span class="text">What is “Daily Bump Up”?</span><div class="icon"><div class="rotate"><svg class="ui-icon i-arrow-d"><use xlink:href="#i-arrow-d"></use></svg></div></div></a></dt><dd><p>To learn all about Daily Bump Up, please visit our <a href="/en/promotions">Promote your ad</a> page. You can also click "Learn more" under the Daily Bump Up option after you click the "Promote ad" option on your ad.</p>
+                                            </dd><dt id="faq-products-4"><a href="#faq-products-4"><span class="num">4. </span><span class="text">How do I get a Shop / page for my business?</span><div class="icon"><div class="rotate"><svg class="ui-icon i-arrow-d"><use xlink:href="#i-arrow-d"></use></svg></div></div></a></dt><dd><p>Shop pages are included in all of our Membership packages, so setting up a Membership automatically allows you to get your very own Shop page. <a href="/en/membership">Learn about Memberships</a></p>
+                                            </dd><dt id="faq-products-5"><a href="#faq-products-5"><span class="num">5. </span><span class="text">What is a Membership?</span><div class="icon"><div class="rotate"><svg class="ui-icon i-arrow-d"><use xlink:href="#i-arrow-d"></use></svg></div></div></a></dt><dd><p>To learn all about Membership, please visit our <a href="/en/membership">Membership page</a></p>
+                                            </dd><dt id="faq-products-6"><a href="#faq-products-6"><span class="num">6. </span><span class="text">How do I buy a voucher?</span><div class="icon"><div class="rotate"><svg class="ui-icon i-arrow-d"><use xlink:href="#i-arrow-d"></use></svg></div></div></a></dt><dd><p>To purchase a voucher, please click the "Promote this ad" button on your ad and follow the instruction on "How to buy voucher". </p>
+                                            <p>Need more information on vouchers? Please contact us at <a href="mailto:support@bikroy.com">support@bikroy.com</a></p>
+                                            </dd><dt id="faq-products-7"><a href="#faq-products-7"><span class="num">7. </span><span class="text">How do vouchers work? </span><div class="icon"><div class="rotate"><svg class="ui-icon i-arrow-d"><use xlink:href="#i-arrow-d"></use></svg></div></div></a></dt><dd><p>Your voucher can be used to buy any Top Ad or Bump Up as long as the balance remaining covers the price of the promotion. </p>
+                                            <p>If your balance is too low to buy a Top Ad or Bump Up, please contact us to transfer the remaining balance and top it up, or use another voucher that has enough balance remaining.</p>
+                                            <p>Please note that vouchers are non-refundable and cannot be redeemed for cash. </p>
+                                            </dd></dl><h2>Additional Q&amp;A</h2><dl class="faq"><dt id="faq-market-1"><a href="#faq-market-1"><span class="num">1. </span><span class="text">How do I read Bangla text?</span><div class="icon"><div class="rotate"><svg class="ui-icon i-arrow-d"><use xlink:href="#i-arrow-d"></use></svg></div></div></a></dt><dd><p>Bikroy uses Unicode to display Bangla text. If you are using Windows XP or an earlier version, you may need to set up Bangla Unicode support in order to view our Bangla site. </p>
+                                            <p>Step 1: Add Unicode language support. </p>
+                                            <ul>
+                                                <li>Download <a href="http://www.omicronlab.com/tools/icomplex-full.html" target="_blank">the iComplex installer and follow the instructions.</a></li>
+                                            </ul>
+                                            <p>Step 2: Add Bangla fonts</p>
+                                            <ul>
+                                                <li>Download Bangla fonts <a href="http://www.omicronlab.com/bangla-fonts.html" target="_blank">from here</a></li>
+                                                <li>Copy the font files to your system's "Font" directory.</li>
+                                            </ul>
+                                                <p>Step 3: Refresh Bikroy.</p>
+                                                </dd><dt id="faq-market-2"><a href="#faq-market-2"><span class="num">2. </span><span class="text">How do I write in Bangla?</span><div class="icon"><div class="rotate"><svg class="ui-icon i-arrow-d"><use xlink:href="#i-arrow-d"></use></svg></div></div></a></dt><dd><p>If you don't have a built-in Bangla keyboard, there are a few methods you can use to type in Bangla:</p>
+                                                <ul>
+                                                    <li><p>Download typing software, <a href="http://www.omicronlab.com/avro-keyboard.html" target="_blank">such as Avro Keyboard</a> or <a href="http://www.google.com/inputtools/windows/installation.html" target="_blank">Google Input Tools</a></p></li>
+                                                    <li><p>Use an online keyboard, such as <a href="http://www.google.com/transliterate/Bengali" target="_blank">Google Transliteration</a>, and then copy-paste the Bangla text over to Bikroy.</p>
+                                                    </li>
+                                                    <li><p>For some mobile phone users, it may be possible to use an online converter, <a href="http://writebangla.com/WriteAvroPhoneticBangla.html" target="_blank">such as Write Bangla</a>, or to obtain a Bangla keyboard through a smartphone app.</p>
+                                                    </li>
+                                                </ul>
+                                            </dd></dl>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- body content end -->
+
+    <div style="height: 10rem"></div>
+
+    <!-- footer start -->
+    <footer class="footer mt-auto py-3">
+        <div class="container">
+            <div class="row">
+                <nav class="col-sm">
+                    <p class="h5">Learn More</p>
+                    <ul>
+                        <li class="nav-link">
+                            <a href="sell_fast">How to sell fast</a>
+                        </li>
+                        <li class="nav-link">
+                            <a href="membership">Membership</a>
+                        </li>
+                        <li class="nav-link">
+                            <a href="banner">Banner Advertising</a>
+                        </li>
+                        <li class="nav-link">
+                            <a href="promote_ad">Promote your ad</a>
+                        </li>
+                    </ul>
+                </nav>
+                <nav class="col-sm">
+                    <p class="h5">Help & Support</p>
+                    <ul>
+                        <li class="nav-link">
+                            <a href="faq">FAQ</a>
+                        </li>
+                        <li class="nav-link">
+                            <a href="stay_safe">Stay safe on Bikroy.com</a>
+                        </li>
+                        <li class="nav-link">
+                            <a href="contact_us">Contact us</a>
+                        </li>
+                    </ul>
+                </nav>
+                <nav class="col-sm">
+                    <p class="h5">Social</p>
+                    <ul>
+                        <li class="nav-link">
+                            <a href="http://blog.bikroy.com/" rel="nofollow" target="_blank">Blog</a>
+                        </li>
+                        <li class="nav-link">
+                            <a href="https://www.facebook.com/bikroy" rel="nofollow" target="_blank">Facebook</a>
+                        </li>
+                        <li class="nav-link">
+                            <a href="https://twitter.com/bikroy_com" rel="nofollow" target="_blank">Twitter</a>
+                        </li>
+                        <li class="nav-link">
+                            <a href="http://www.youtube.com/user/BikroyBD" rel="nofollow" target="_blank">YouTube</a>
+                        </li>
+                    </ul>
+                </nav>
+                <nav class="col-sm">
+                    <p class="h5">About us</p>
+                    <ul>
+                        <li class="nav-link">
+                            <a href="about_us">About us</a>
+                        </li>
+                        <li class="nav-link">
+                            <a href="https://bikroy.com/en/shops/careers">Careers</a>
+                        </li>
+                        <li class="nav-link">
+                            <a href="terms_cond">Terms & Conditions</a>
+                        </li>
+                        <li class="nav-link">
+                            <a href="privacy">Privacy Policy</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </footer>
+
+    <!-- footer end -->
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'js/customMyAccountPage.js' %}"></script>
+</body>
+</html>

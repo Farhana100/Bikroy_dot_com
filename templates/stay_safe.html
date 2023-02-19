@@ -1,0 +1,195 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Stay safe - Bikroy.com</title>
+    <link rel="shortcut icon" href="{% static 'img/title_icon.ico' %}">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css'%}">
+    <link rel="stylesheet" href="{% static 'css/customFooterLinks.css' %}">
+</head>
+<body>
+	<!-- navigation bar start -->
+    <div>
+        <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+            <a class="navbar-brand"  href='home' style="margin-left: 200px"><img src="{% static 'img/bikroy-com-logo.png' %}" alt="bikroy.com"></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <a class="nav-link text-light" href='all_ads'>All ads</a>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                {% if username %}
+                <ul class="navbar-nav ml-auto" style="margin-right: 105px">
+                {% else %}
+                <ul class="navbar-nav ml-auto" style="margin-right: 200px">
+                {% endif %}
+                    <li class="nav-item">
+                        <a class="nav-link text-light mr-3" href='chat'>chat</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-light mr-3" href='my_account_page'>
+                            {% if username %}
+                            My Account
+                            {% else %}
+                            Log In
+                            {% endif %}
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link btn shadow-sm rounded text-dark post-ad-btn" href='post_ad'>POST YOUR AD</a>
+                    </li>
+                </ul>
+            </div>
+
+            {% if username %}
+            <a class="nav-link text-light" href='signout'>Sign out</a>
+            {% endif %}
+
+        </nav>
+    </div>
+
+    <!-- navigation bar end -->
+
+    <div style="margin-top: 70px"></div>
+    
+    <!-- body content start -->
+    
+    <div class="container border rounded shadow-sm py-5 px-5 body-content">
+        <div class="">
+            <h1 class="h2">Stay safe on Bikroy.com</h1>
+            <p>At Bikroy.com we are 100% committed to making sure that your experience on our site is as safe as possible.</p>
+            <p>Here you can find advice on how to stay safe while trading on Bikroy.com.</p>
+            <img width="111" height="130" src="{% static 'img/stay-safe-1.png' %}">
+            <h2>General safety advice</h2>
+            <ul>
+                <li>
+                    <p><strong>Keep things local.</strong> Meet the seller in person, check the item and make sure you are satisfied with it before you make a payment.</p>
+                </li>
+                <li>
+                    <strong>Exchange item and payment at the same time.</strong> Buyers – don't make any payments before receiving an item. Sellers – don't send an item before receiving payment.
+                </li>
+                <li>
+                    <strong>Use common sense.</strong> Avoid anything that appears too good to be true, such as unrealistically low prices and promises of quick money.
+                </li>
+                <li>
+                    <strong>Never give out financial information.</strong> This includes bank account details, eBay/PayPal info, and any other information that could be misused.
+                </li>
+            </ul>
+            <img class="stay-safe" width="111" height="99" src="{% static 'img/stay-safe-2.png' %}">
+            <h2>Scams and frauds to watch out for</h2>
+            <ul>
+                <li>
+                    <strong>Fake payment services.</strong> Bikroy.com does not offer any form of payment scheme or protection. Please report any emails claiming to offer such services. Avoid using online payment services or escrow sites unless you are 100% sure that they are genuine.
+                </li>
+                <li>
+                    <strong>Fake information requests.</strong> Bikroy.com never sends emails requesting your personal details. If you receive an email asking you to provide your personal details to us, do not open any links. Please report the email and delete it.
+                </li>
+                <li>
+                    <strong>Fake fee requests.</strong> Avoid anyone that ask for extra fees to buy or sell an item or service. Bikroy.com never requests payments for its basic services, and doesn't allow items that are not located in Bangladesh, so import and brokerage fees should never be required.
+                </li>
+                <li>
+                    <strong>Requests to use money transfer services such as Western Union or MoneyGram.</strong> These services are not meant for transactions between strangers and many scams are run through them. Avoid requests to use these services.
+                </li>
+            </ul>
+            <h2>Bikroy.com's safety measures</h2>
+            <p>We work continuously to ensure you have a safe, enjoyable experience on Bikroy.com.</p>
+            <p>Our safety measures include:</p>
+            <ul>
+                <li>Hiding your email address on ads you post to protect you from spam.</li>
+                <li>Giving you the option to hide your phone number on ads you post to protect you from spam.</li>
+                <li>Making constant improvements to our technology to detect and prevent suspicious or inappropriate activity behind the scenes.</li>
+                <li>Tracking reports of suspicious or illegal activity to prevent offenders from using the site again.</li>
+            </ul>
+            <h2>Reporting a safety issue</h2>
+            <p>If you feel that you have been the victim of a scam, please report your situation to us immediately. If you have been cheated, we also recommend that you contact your local police department.</p>
+            <p>Bikroy.com is committed to ensuring the privacy of its users and therefore does not share information about its users publicly. However, we are committed to the safety of our users and will cooperate with the police department should we receive any requests for information in connection with fraudulent or other criminal activity.</p>
+        </div>
+    </div>
+
+    <!-- body content end -->
+
+    <div style="height: 10rem"></div>
+
+    <!-- footer start -->
+    <footer class="footer mt-auto py-3">
+        <div class="container">
+            <div class="row">
+                <nav class="col-sm">
+                    <p class="h5">Learn More</p>
+                    <ul>
+                        <li class="nav-link">
+                            <a href="sell_fast">How to sell fast</a>
+                        </li>
+                        <li class="nav-link">
+                            <a href="membership">Membership</a>
+                        </li>
+                        <li class="nav-link">
+                            <a href="banner">Banner Advertising</a>
+                        </li>
+                        <li class="nav-link">
+                            <a href="promote_ad">Promote your ad</a>
+                        </li>
+                    </ul>
+                </nav>
+                <nav class="col-sm">
+                    <p class="h5">Help & Support</p>
+                    <ul>
+                        <li class="nav-link">
+                            <a href="faq">FAQ</a>
+                        </li>
+                        <li class="nav-link">
+                            <a href="stay_safe">Stay safe on Bikroy.com</a>
+                        </li>
+                        <li class="nav-link">
+                            <a href="contact_us">Contact us</a>
+                        </li>
+                    </ul>
+                </nav>
+                <nav class="col-sm">
+                    <p class="h5">Social</p>
+                    <ul>
+                        <li class="nav-link">
+                            <a href="http://blog.bikroy.com/" rel="nofollow" target="_blank">Blog</a>
+                        </li>
+                        <li class="nav-link">
+                            <a href="https://www.facebook.com/bikroy" rel="nofollow" target="_blank">Facebook</a>
+                        </li>
+                        <li class="nav-link">
+                            <a href="https://twitter.com/bikroy_com" rel="nofollow" target="_blank">Twitter</a>
+                        </li>
+                        <li class="nav-link">
+                            <a href="http://www.youtube.com/user/BikroyBD" rel="nofollow" target="_blank">YouTube</a>
+                        </li>
+                    </ul>
+                </nav>
+                <nav class="col-sm">
+                    <p class="h5">About us</p>
+                    <ul>
+                        <li class="nav-link">
+                            <a href="about_us">About us</a>
+                        </li>
+                        <li class="nav-link">
+                            <a href="https://bikroy.com/en/shops/careers">Careers</a>
+                        </li>
+                        <li class="nav-link">
+                            <a href="terms_cond">Terms & Conditions</a>
+                        </li>
+                        <li class="nav-link">
+                            <a href="privacy">Privacy Policy</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </footer>
+
+    <!-- footer end -->
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+</body>
+</html>

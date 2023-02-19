@@ -1,0 +1,85 @@
+body {
+	font-family: Arial,Helvetica,sans-serif;
+	line-height: 1.71428571;
+	font-size: 14px;
+	box-sizing: border-box;
+	margin: 0;
+	color: #707676;
+	min-width: 984px;
+}
+
+.navbar {
+    background-color: #149777 !important;
+}
+
+.post-ad-btn {
+	background-color: #FFCD33;
+}
+
+.post-ad-btn:hover {
+	background-color: #F4B931;
+}
+
+
+.my-account-btn{
+	background-color: #1D654D !important;
+	width: 113px !important;
+}
+
+/*
+ * Sidebar
+ */
+
+.sidebar {
+	z-index: 100; /* Behind the navbar */
+	box-shadow: inset -1px 0 0 rgba(0, 0, 0, .1);
+}
+
+.sidebar-sticky {
+	position: relative;
+	top: 0;
+	height: calc(100vh - 48px);
+	padding-top: .5rem;
+	overflow-x: hidden;
+	overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
+}
+
+@supports ((position: -webkit-sticky) or (position: sticky)) {
+	.sidebar-sticky {
+	position: -webkit-sticky;
+	position: sticky;
+	}
+}
+
+.sidebar .nav-link {
+	font-weight: 500;
+	color: #333;
+}
+
+.sidebar .nav-link.active {
+ 	color: #007bff;
+}
+
+.sidebar .nav-link:hover {
+	font-weight: bold;
+ 	color: inherit;
+}
+
+.sidebar-heading {
+	font-size: .75rem;
+	text-transform: uppercase;
+}
+
+
+.footer {
+  background-color: #f5f5f5;
+}
+
+.footer > .container {
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
+.footer > .container > .row > .col-sm > .h5 {
+	margin-left: 55px;
+}

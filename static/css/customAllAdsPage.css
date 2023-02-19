@@ -1,0 +1,75 @@
+body {
+	font-family: Arial,Helvetica,sans-serif;
+	line-height: 1.71428571;
+	font-size: 14px;
+	box-sizing: border-box;
+	margin: 0;
+	color: #707676;
+	min-width: 984px;
+}
+
+.navbar {
+    background-color: #149777 !important;
+}
+
+.post-ad-btn {
+	background-color: #FFCD33;
+}
+
+.post-ad-btn:hover {
+	background-color: #F4B931;
+}
+
+.post-ad-img {
+	height: 130px;
+	width: 150px;
+	float: left;
+}
+
+.post-ad-price {
+	color: #149777;
+}
+
+.all-ads-btn {
+	background-color: #1D654D !important;
+}
+
+.post-ad {
+	height: 150px;
+	width: 500px;
+}
+
+.post-ad:hover {
+	box-shadow:  1px 1px 10px;
+}
+
+.chat-link:hover {
+	box-shadow: 1px 1px 10px;
+}
+
+.post-top-ad {
+	height: 150px;
+	width: 500px;
+}
+
+.post-top-ad:hover {
+	box-shadow:  1px 1px 10px #FACA40;
+}
+
+.spot-post-ad-img {
+	height: 300px;
+	width: 500px;
+}
+
+.footer {
+  background-color: #f5f5f5;
+}
+
+.footer > .container {
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
+.footer > .container > .row > .col-sm > .h5 {
+	margin-left: 55px;
+}

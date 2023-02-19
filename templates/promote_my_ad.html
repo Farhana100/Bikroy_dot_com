@@ -1,0 +1,223 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Bikroy.com</title>
+    <link rel="shortcut icon" href="{% static 'img/title_icon.ico' %}">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css'%}">
+    <link rel="stylesheet" href="{% static 'css/customFooterLinks.css' %}">
+    <link rel="stylesheet" href="{% static 'css/customMyAccountPage.css'%}">
+</head>
+<body>
+	<!-- navigation bar start -->
+    <div>
+        <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+            <a class="navbar-brand"  href='home' style="margin-left: 200px"><img src="{% static 'img/bikroy-com-logo.png' %}" alt="bikroy.com"></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <a class="nav-link text-light" href='all_ads'>All ads</a>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                {% if username %}
+                <ul class="navbar-nav ml-auto" style="margin-right: 105px">
+                {% else %}
+                <ul class="navbar-nav ml-auto" style="margin-right: 200px">
+                {% endif %}
+                    <li class="nav-item">
+                        <a class="nav-link text-light mr-3" href='chat' disabled>chat</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-light mr-3" href='my_account_page'>
+                            {% if username %}
+                            My Account
+                            {% else %}
+                            Log In
+                            {% endif %}
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link btn shadow-sm rounded text-dark post-ad-btn" href='post_ad'>POST YOUR AD</a>
+                    </li>
+                </ul>
+            </div>
+
+            {% if username %}
+            <a class="nav-link text-light" href='signout'>Sign out</a>
+            {% endif %}
+
+        </nav>
+    </div>
+
+    <!-- navigation bar end -->
+
+    <div style="margin-top: 70px"></div>
+
+    <!-- body content start -->
+
+    <div class="container border rounded shadow-sm py-5 px-5 body-content" style="width: 40%;">
+        {% if is_member %}
+            <h5 class="text-dark font-weight-bold">Make your ad stand out!</h5>
+            <h5>Get up to 10x more responses on your ads by applying a promotion.</h5>
+            <br>
+            <br>
+            <h6>Select one or more options.</h6>
+
+
+            <form method='post' action="reqest_ad_promotion">
+                {% csrf_token %}
+                <div class="border shadow-sm p-2 m-2">
+                    <div class="form-check ">
+                        <input class="form-check-input" type="checkbox" value="urg" name="urgent" id="Urgent">
+                        <label class="form-check-label" for="Urgent">
+                            <h6 class="text-dark">Urgent Ad</h6>
+                            <p>The Urgent promotion ensures that your ad stands out from the rest (shown with a red tag). Your
+                                ad will also be shown in the Urgent filter thereby giving it more visibility.</p>
+                        </label>
+                    </div>
+                </div>
+                <div class="border shadow-sm p-2 m-2">
+                    <div class="form-check ">
+                        <input class="form-check-input" type="checkbox" value="top" id="Top" name="top">
+                        <label class="form-check-label" for="Top">
+                            <h6 class="text-dark">Top Ad</h6>
+                            <p>At the top of every ad listing page. By adding a Top Ad promotion to your ad, you earn the
+                                chance for your ad to be displayed in one of these Top Ad spots - which can get you up to 10 times or more views!</p>
+                        </label>
+                    </div>
+                </div>
+                <div class="border shadow-sm p-2 m-2">
+                    <div class="form-check ">
+                        <input class="form-check-input" type="checkbox" value="spot" id="Spotlight" name="spot">
+                        <label class="form-check-label" for="Spotlight">
+                            <h6 class="text-dark">Spotlight</h6>
+                            <p>Spotlight is a premium spot for showcasing your high-value items and getting immediate
+                                attention from buyers on Bikroy. To get the most value out of this promotion, make sure
+                                you add great-looking photos while posting your ad.</p>
+                        </label>
+                    </div>
+                </div>
+                <label class="text-danger px-3" id="warninglabel"></label>
+                <div class="form-group p-2 m-2">
+                    <input class="btn btn-block btn-outline-success my-2" type="submit" value="Continue" id="checkBtn">
+                </div>
+            </form>
+
+        {% else %}
+            <div class="no-membership">
+                <div class="shop-image">
+                    <img src="{% static 'img/my_membership.png' %}">
+                </div>
+                <h3>Become a bikroy member</h3>
+
+                <p>Memberships give your business a voice and presence on bikroy, to reach more customers,
+                    increase your sales and expand your business! Memberships unlock powerful tools like ad promotions.</p>
+
+                <a class="btn btn-outline-dark" href="membership">Learn More</a>
+
+            </div>
+        {% endif %}
+    </div>
+
+    <!-- body content end -->
+
+    <div style="height: 10rem"></div>
+
+    <!-- footer start -->
+    <footer class="footer mt-auto py-3">
+        <div class="container">
+            <div class="row">
+                <nav class="col-sm">
+                    <p class="h5">Learn More</p>
+                    <ul>
+                        <li class="nav-link">
+                            <a href="sell_fast">How to sell fast</a>
+                        </li>
+                        <li class="nav-link">
+                            <a href="membership">Membership</a>
+                        </li>
+                        <li class="nav-link">
+                            <a href="banner">Banner Advertising</a>
+                        </li>
+                        <li class="nav-link">
+                            <a href="promote_ad">Promote your ad</a>
+                        </li>
+                    </ul>
+                </nav>
+                <nav class="col-sm">
+                    <p class="h5">Help & Support</p>
+                    <ul>
+                        <li class="nav-link">
+                            <a href="faq">FAQ</a>
+                        </li>
+                        <li class="nav-link">
+                            <a href="stay_safe">Stay safe on Bikroy.com</a>
+                        </li>
+                        <li class="nav-link">
+                            <a href="contact_us">Contact us</a>
+                        </li>
+                    </ul>
+                </nav>
+                <nav class="col-sm">
+                    <p class="h5">Social</p>
+                    <ul>
+                        <li class="nav-link">
+                            <a href="http://blog.bikroy.com/" rel="nofollow" target="_blank">Blog</a>
+                        </li>
+                        <li class="nav-link">
+                            <a href="https://www.facebook.com/bikroy" rel="nofollow" target="_blank">Facebook</a>
+                        </li>
+                        <li class="nav-link">
+                            <a href="https://twitter.com/bikroy_com" rel="nofollow" target="_blank">Twitter</a>
+                        </li>
+                        <li class="nav-link">
+                            <a href="http://www.youtube.com/user/BikroyBD" rel="nofollow" target="_blank">YouTube</a>
+                        </li>
+                    </ul>
+                </nav>
+                <nav class="col-sm">
+                    <p class="h5">About us</p>
+                    <ul>
+                        <li class="nav-link">
+                            <a href="about_us">About us</a>
+                        </li>
+                        <li class="nav-link">
+                            <a href="https://bikroy.com/en/shops/careers">Careers</a>
+                        </li>
+                        <li class="nav-link">
+                            <a href="terms_cond">Terms & Conditions</a>
+                        </li>
+                        <li class="nav-link">
+                            <a href="privacy">Privacy Policy</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </footer>
+
+    <!-- footer end -->
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <script type="text/javascript">
+    $(document).ready(function () {
+        $('#checkBtn').click(function() {
+          checked = $("input[type=checkbox]:checked").length;
+
+          if(!checked) {
+              $('#warninglabel').text("Select at least one type");
+            return false;
+          }
+
+        });
+    });
+
+    </script>
+</body>
+</html>

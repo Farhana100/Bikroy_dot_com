@@ -1,0 +1,327 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Bikroy.com</title>
+    <link rel="shortcut icon" href="{% static 'img/title_icon.ico' %}">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css'%}">
+    <link rel="stylesheet" href="{% static 'css/customAllAdsPage.css'%}">
+    <link rel="stylesheet" href="{% static 'css/customFooterLinks.css' %}">
+</head>
+<body>
+	<!-- navigation bar start -->
+    <div>
+        <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+            <a class="navbar-brand"  href='home' style="margin-left: 200px"><img src="{% static 'img/bikroy-com-logo.png' %}" alt="bikroy.com"></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <a class="nav-link text-light" href='all_ads'>All ads</a>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                {% if username %}
+                <ul class="navbar-nav ml-auto" style="margin-right: 105px">
+                {% else %}
+                <ul class="navbar-nav ml-auto" style="margin-right: 200px">
+                {% endif %}
+                    <li class="nav-item">
+                        <a class="nav-link text-light mr-3" href='chat'>chat</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-light mr-3" href='my_account_page'>
+                            {% if username %}
+                            My Account
+                            {% else %}
+                            Log In
+                            {% endif %}
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link btn shadow-sm rounded text-dark post-ad-btn" href='post_ad'>POST YOUR AD</a>
+                    </li>
+                </ul>
+            </div>
+
+            {% if username %}
+            <a class="nav-link text-light" href='signout'>Sign out</a>
+            {% endif %}
+
+        </nav>
+    </div>
+
+    <!-- navigation bar end -->
+
+    <div style="margin-top: 70px"></div>
+    
+    <!-- body content start -->
+
+    <!-- message alert start -->
+    {% if message %}
+    <div class="p-3">
+        <div class="alert alert-info alert-dismissible fade show">
+            {{ message }}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    </div>
+    {% endif %}
+    <!-- message alert end -->
+    
+    <div class="container border rounded shadow-sm py-5 px-5 body-content">
+
+        {% if user_id != poster_id and user_id %}
+            {% if is_fav %}
+                <form method="post" action="del_fav">
+                    {%  csrf_token %}
+                    <input value="{{ post_id }}" id="fav_post_id" name="fav_post_id" hidden>
+                    <button class="btn btn-outline-warning float-right" style="float: top; width: 250px;" id="favbtn">Remove From Favourities </button>
+                </form>
+            {%  else %}
+                <form method="post" action="save_fav">
+                    {% csrf_token %}
+                    <input value="{{ post_id }}" id="fav_post_id" name="fav_post_id" hidden>
+                    <button class="btn btn-outline-info float-right" style="float: top; width: 250px;" id="favbtn">Add to Favourities </button>
+                </form>
+            {% endif %}
+        {% endif %}
+
+        <h3 class="font-weight-bold text-dark">{{ title }} <span class="badge badge-secondary">{{ condition }}</span></h3>
+        <p class="text-muted">Posted on {{ time }}, {{ sublocation }}, {{ location }}</p>
+
+        <div class="row">
+            <div class="col-7">
+                <img src="/media/{{ image_name }}" width="100%">
+                <h3 class="py-3 post-ad-price">Tk {{price}}</h3>
+
+                <div id="desc" {% if desc_len > 10000 %}  class="collapse" {% endif %}>
+                    <h5 class="text-dark">Description</h5>
+                    <h6>{% if is_nego == 'Y' %}Negotiable{% endif %}</h6>
+                    <p>
+                        {{ description }}
+                    </p>
+                </div>
+                 {% if desc_len > 10000 %}
+                    <a data-toggle="collapse" data-target="#desc">Show more</a>
+                 {% endif %}
+            </div>
+            <div class="col-5">
+                <div class="card">
+                    <div class="card-header">For sale by <b class="text-dark">{{ poster_name }}</b></div>
+                    <div class="card-body">
+                        <p class="text-dark font-weight-bold">
+                            <img src="{% static "img/contact-us.png" %}" height="30px">  Call seller: {{ contact_num }}</p>
+                    </div>
+                    <div class="card-footer">
+                        <button class="btn btn-block btn-outline-success" type="button" data-toggle="modal" data-target="#chatModal" {% if user_id == poster_id or not user_id %} disabled {% endif %} >chat</button>
+                        <!-- The Modal -->
+                        <div class="modal" id="chatModal">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+
+                                    <!-- Modal Header -->
+                                    <div class="modal-header">
+                                        <h5 class="modal-title text-dark">Chat with {{ poster_name }}</h5>
+                                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                    </div>
+                                    <form method="post" action='open_chat_box'>
+                                        {% csrf_token %}
+                                        <!-- Modal body -->
+                                        <div class="modal-body">
+                                            <div class="form-group">
+                                                <label for="msg">Enter Message:</label>
+                                                <textarea class="form-control" name="msg" placeholder="type a message" id="msg" rows="1" required></textarea>
+                                            </div>
+                                        </div>
+
+                                        <!-- Modal footer -->
+                                        <div class="modal-footer">
+                                                <input type="hidden" name="poster_id" value="{{ poster_id }}" />
+                                                <input type="hidden" name="poster_name" value="{{ poster_name }}" />
+                                                <a class="btn btn-block btn-outline-success" onclick="this.parentNode.parentNode.submit();">Send</a>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <hr class="py-3">
+
+        {% if poster_id == user_id %}
+            <div class="row text-center">
+                <div class="col">
+                    {% ifequal ad_type 'normal' %}
+                        <form method="post" action='ad_promotion_redirect'>
+                            {% csrf_token %}
+                            <input type="hidden" name="post_id" value="{{ post_id }}" />
+                            <a class="btn btn-block btn-success" data-toggle="tooltip" title="stand out and reach more interested buyers quickly and easily"  onclick="this.parentNode.submit();">Promote this Ad</a>
+                        </form>
+                    {% else %}
+                            <button class="btn btn-success" data-toggle="tooltip" title="stand out and reach more interested buyers quickly and easily" disabled>Promoted already</button>
+                    {% endifequal %}
+                </div>
+                <div class="col mx-auto">
+                    <form method="post" action='delete_post'>
+                        {% csrf_token %}
+                        <input type="hidden" name="delete_post" value="{{ post_id }}" />
+                        <a class="btn btn-block btn-danger " data-toggle="tooltip"   onclick="this.parentNode.submit();">Delete this ad</a>
+                    </form>
+                </div>
+            </div>
+        {% else %}
+            <a class="btn btn-outline-warning" data-toggle="modal" data-target="#ReportModal">Report this Ad</a>
+            <!-- The Report Modal -->
+            <div class="modal" id="ReportModal">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+
+                        <!-- Modal Header -->
+                        <div class="modal-header">
+                            <h5 class="modal-title text-dark">Is there something wrong with this ad?</h5>
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        </div>
+
+                        <!-- Modal body -->
+                        <div class="modal-body">
+                            <p>We're constantly working hard to assure that our ads meet high standards and we are very
+                                grateful for any kind of feedback from our users.</p>
+                            <form method="post" action='reporting_ad'>
+                                {% csrf_token %}
+                                <div class="form-group">
+                                    <label for="reason">Reason:</label>
+                                    <select class="form-control" id="reason" name="reason" required>
+                                        <option>Item sold/unavailable</option>
+                                        <option>Fraud</option>
+                                        <option>Duplicate</option>
+                                        <option>Spam</option>
+                                        <option>Wrong Category</option>
+                                        <option>Offensive</option>
+                                        <option>Other</option>
+                                    </select>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="email">Your Email:</label>
+                                    <input type="email" class="form-control" placeholder="Enter email" id="email" name="reporter_email" {% if email %} value="{{ email }}" {% endif %}  required>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="message">Message:</label>
+                                    <textarea rows="8" class="form-control" placeholder="" id="message" name="reporter_message" wrap="soft" required></textarea>
+                                </div>
+
+                                <div class="form-group">
+                                    <input name="reported_post_id" value="{{ post_id }}" hidden>
+                                </div>
+
+
+                                <button class="btn btn-block btn-outline-secondary" type="submit">Send</button>
+                            </form>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        {% endif %}
+
+
+    </div>
+
+    <!-- body content end -->
+
+    <div style="height: 10rem"></div>
+
+    <!-- footer start -->
+    <footer class="footer mt-auto py-3">
+        <div class="container">
+            <div class="row">
+                <nav class="col-sm">
+                    <p class="h5">Learn More</p>
+                    <ul>
+                        <li class="nav-link">
+                            <a href="sell_fast">How to sell fast</a>
+                        </li>
+                        <li class="nav-link">
+                            <a href="membership">Membership</a>
+                        </li>
+                        <li class="nav-link">
+                            <a href="banner">Banner Advertising</a>
+                        </li>
+                        <li class="nav-link">
+                            <a href="promote_ad">Promote your ad</a>
+                        </li>
+                    </ul>
+                </nav>
+                <nav class="col-sm">
+                    <p class="h5">Help & Support</p>
+                    <ul>
+                        <li class="nav-link">
+                            <a href="faq">FAQ</a>
+                        </li>
+                        <li class="nav-link">
+                            <a href="stay_safe">Stay safe on Bikroy.com</a>
+                        </li>
+                        <li class="nav-link">
+                            <a href="contact_us">Contact us</a>
+                        </li>
+                    </ul>
+                </nav>
+                <nav class="col-sm">
+                    <p class="h5">Social</p>
+                    <ul>
+                        <li class="nav-link">
+                            <a href="http://blog.bikroy.com/" rel="nofollow" target="_blank">Blog</a>
+                        </li>
+                        <li class="nav-link">
+                            <a href="https://www.facebook.com/bikroy" rel="nofollow" target="_blank">Facebook</a>
+                        </li>
+                        <li class="nav-link">
+                            <a href="https://twitter.com/bikroy_com" rel="nofollow" target="_blank">Twitter</a>
+                        </li>
+                        <li class="nav-link">
+                            <a href="http://www.youtube.com/user/BikroyBD" rel="nofollow" target="_blank">YouTube</a>
+                        </li>
+                    </ul>
+                </nav>
+                <nav class="col-sm">
+                    <p class="h5">About us</p>
+                    <ul>
+                        <li class="nav-link">
+                            <a href="about_us">About us</a>
+                        </li>
+                        <li class="nav-link">
+                            <a href="https://bikroy.com/en/shops/careers">Careers</a>
+                        </li>
+                        <li class="nav-link">
+                            <a href="terms_cond">Terms & Conditions</a>
+                        </li>
+                        <li class="nav-link">
+                            <a href="privacy">Privacy Policy</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </footer>
+
+    <!-- footer end -->
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <script>
+        $(document).ready(function(){
+          $('[data-toggle="tooltip"]').tooltip();
+        });
+
+    </script>
+</body>
+</html>

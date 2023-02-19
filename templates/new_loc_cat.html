@@ -1,0 +1,240 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Admin | Bikroy.com</title>
+    <link rel="shortcut icon" href="{% static 'img/title_icon.ico' %}">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css'%}">
+    <link rel="stylesheet" href="{% static 'css/customAllAdsPage.css'%}">
+    <link rel="stylesheet" href="{% static 'css/customFooterLinks.css' %}">
+</head>
+<body>
+	<!-- navigation bar start -->
+    <div>
+        <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+            <a class="navbar-brand"  href='home' style="margin-left: 200px"><img src="{% static 'img/bikroy-com-logo.png' %}" alt="bikroy.com"></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <ul class="navbar-nav ml-auto" style="margin-right: 105px">
+                    <li class="nav-item">
+                        <a class="nav-link text-light mr-3" href='AdminPage'>Admin Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-light mr-3" href='remove_post_ad'>Remove Ads</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-light mr-3" href='update_post_type'>Promote Ads</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-light mr-3" href='make_member'>Make Members</a>
+                    </li>
+                    <li class="nav-item">
+                        <div class="nav-link border border-dark rounded shadow-sm text-light mr-3">Add New Location and Category</div>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-light mr-3" href='all_members'>All Members</a>
+                    </li>
+                    {% if manager %}
+                    <li class="nav-item">
+                        <a class="nav-link text-light mr-3" href='make_admin'>Make Admin</a>
+                    </li>
+                    {% endif %}
+                    <li class="nav-item">
+                        <a class="nav-link text-light mr-3" href='signout'>Sign out</a>
+                    </li>
+                </ul>
+            </div>
+
+        </nav>
+    </div>
+
+    <!-- navigation bar end -->
+
+
+    <div style="margin-top: 70px"></div>
+    
+    <!-- body content start -->
+
+    <!-- new location -->
+    <div class="container border rounded shadow-sm py-5 px-5 my-3 body-content">
+        <h3 class="text-dark text-center m-2">Add new Location</h3>
+         <form method="post" action="add_new_loc">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="new_loc">New Location: </label>
+                <input type="text" class="form-control" name="new_loc" id="new_loc" placeholder="Enter new location name" required>
+            </div>
+
+          <button type="submit" class="btn btn-outline-success">Add Location</button>
+        </form>
+    </div>
+
+    <!-- new sub location -->
+    <div class="container border rounded shadow-sm py-5 px-5 my-3 body-content">
+        <h3 class="text-dark text-center m-2">Add new Sub Location</h3>
+        <form method="post" action="add_new_subloc">
+            {% csrf_token %}
+            <div class="form-group">
+                <select class="form-control" name="add_to_loc" required>
+                    <option class="text-dark font-weight-bold" disabled selected>Choose Location</option>
+                    {% for loc in locations %}
+                        <option>{{ loc }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="new_sub_loc">New Sub Location: </label>
+                <input type="text" class="form-control" name="new_sub_loc" id="new_Sub_loc" placeholder="Enter new sub location name" required>
+            </div>
+
+          <button type="submit" class="btn btn-outline-success">Add Sub Location</button>
+        </form>
+    </div>
+
+    <!-- new Category -->
+    <div class="container border rounded shadow-sm py-5 my-3 px-5 body-content">
+        <h3 class="text-dark text-center m-2">Add new Category</h3>
+        <form method="post" action="add_new_cat" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="new_cat">New Category: </label>
+                <input type="text" class="form-control" name="new_cat" id="new_cat" placeholder="Enter new Category name" required>
+                <textarea  class="form-control" rows="8"  name="new_cat_description" id="new_cat_description" placeholder="Description" required></textarea>
+                <input class="form-control" type="file" id="img1" name="img1" accept="image/jpeg, image/png" onchange="loadFile(event)" style="display: none;" required>
+                <label for="img1" >
+                    <div class="container border">
+                        Add a photo<br>
+                        <img id="output" src="{% static 'img/images_placeholder.png' %}" style="width: 100px; height: 100px;">
+                    </div>
+                </label>
+                <script>
+                var loadFile = function(event) {
+                    var image = document.getElementById('output');
+                    image.src = URL.createObjectURL(event.target.files[0]);
+                };
+                </script>
+            </div>
+
+          <button type="submit" class="btn btn-outline-success">Add Category</button>
+        </form>
+    </div>
+
+    <!-- new sub Category -->
+    <div class="container border rounded shadow-sm py-5 my-3 px-5 body-content">
+        <h3 class="text-dark text-center m-2">Add new Sub Category</h3>
+        <form method="post" action="add_new_subcat">
+            {% csrf_token %}
+            <div class="form-group">
+                <select class="form-control" name="add_to_cat" required>
+                    <option class="text-dark font-weight-bold" disabled selected>Choose Category</option>
+                    {% for cat in categories %}
+                        <option>{{ cat }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="new_sub_cat">New Sub Category: </label>
+                <input type="text" class="form-control" name="new_sub_cat" id="new_sub_cat" placeholder="Enter new Sub Category name" required>
+            </div>
+
+          <button type="submit" class="btn btn-outline-success">Add Sub Category</button>
+        </form>
+    </div>
+
+    <!-- body content end -->
+
+    <div style="height: 10rem"></div>
+
+    <!-- footer start -->
+    <footer class="footer mt-auto py-3">
+        <div class="container">
+            <div class="row">
+                <nav class="col-sm">
+                    <p class="h5">Learn More</p>
+                    <ul>
+                        <li class="nav-link">
+                            <a href="sell_fast">How to sell fast</a>
+                        </li>
+                        <li class="nav-link">
+                            <a href="membership">Membership</a>
+                        </li>
+                        <li class="nav-link">
+                            <a href="banner">Banner Advertising</a>
+                        </li>
+                        <li class="nav-link">
+                            <a href="promote_ad">Promote your ad</a>
+                        </li>
+                    </ul>
+                </nav>
+                <nav class="col-sm">
+                    <p class="h5">Help & Support</p>
+                    <ul>
+                        <li class="nav-link">
+                            <a href="faq">FAQ</a>
+                        </li>
+                        <li class="nav-link">
+                            <a href="stay_safe">Stay safe on Bikroy.com</a>
+                        </li>
+                        <li class="nav-link">
+                            <a href="contact_us">Contact us</a>
+                        </li>
+                    </ul>
+                </nav>
+                <nav class="col-sm">
+                    <p class="h5">Social</p>
+                    <ul>
+                        <li class="nav-link">
+                            <a href="http://blog.bikroy.com/" rel="nofollow" target="_blank">Blog</a>
+                        </li>
+                        <li class="nav-link">
+                            <a href="https://www.facebook.com/bikroy" rel="nofollow" target="_blank">Facebook</a>
+                        </li>
+                        <li class="nav-link">
+                            <a href="https://twitter.com/bikroy_com" rel="nofollow" target="_blank">Twitter</a>
+                        </li>
+                        <li class="nav-link">
+                            <a href="http://www.youtube.com/user/BikroyBD" rel="nofollow" target="_blank">YouTube</a>
+                        </li>
+                    </ul>
+                </nav>
+                <nav class="col-sm">
+                    <p class="h5">About us</p>
+                    <ul>
+                        <li class="nav-link">
+                            <a href="about_us">About us</a>
+                        </li>
+                        <li class="nav-link">
+                            <a href="https://bikroy.com/en/shops/careers">Careers</a>
+                        </li>
+                        <li class="nav-link">
+                            <a href="terms_cond">Terms & Conditions</a>
+                        </li>
+                        <li class="nav-link">
+                            <a href="privacy">Privacy Policy</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </footer>
+
+    <!-- footer end -->
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <script>
+        $(document).ready(function(){
+          $('[data-toggle="tooltip"]').tooltip();
+        });
+    </script>
+</body>
+</html>

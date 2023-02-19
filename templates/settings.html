@@ -1,0 +1,322 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>bikroy.com</title>
+    <link rel="shortcut icon" href="{% static 'img/title_icon.ico' %}">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css'%}">
+    <link rel="stylesheet" href="{% static 'css/customMyAccountPage.css'%}">
+</head>
+<body>
+    <!-- navigation bar start -->
+    <div>
+        <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+            <a class="navbar-brand"  href='home' style="margin-left: 200px"><img src="{% static 'img/bikroy-com-logo.png' %}" alt="bikroy.com"></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <a class="nav-link text-light" href='all_ads'>All ads</a>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <ul class="navbar-nav ml-auto" style="margin-right: 105px">
+                    <li class="nav-item">
+                        <a class="nav-link text-light mr-2" href='chat'>chat</a>
+                    </li>
+                    <li class="nav-item">
+                    	<button class="btn btn-light text-light my-account-btn mr-3" disabled>My Account</button>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link btn shadow-sm rounded text-dark post-ad-btn" href='post_ad'>POST YOUR AD</a>
+                    </li>
+                </ul>
+            </div>
+            <a class="nav-link text-light" href="signout">Sign out</a>
+        </nav>
+    </div>
+
+    <!-- navigation bar end -->
+
+    <div style="margin-top: 70px"></div>
+    
+    <!-- body content start -->
+
+    <!-- updated alert start -->
+    {% if msg %}
+    <div class="p-3">
+        <div class="alert alert-success alert-dismissible fade show">
+            {{ msg }}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    </div>
+    {% endif %}
+    <!-- updated alert end -->
+
+    <div class="container border rounded shadow-sm py-5 px-5 body-content">
+	  	<div class="row">
+			<nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
+				<div class="sidebar-sticky pt-3">
+					<ul class="nav flex-column">
+						<li class="nav-item">
+							<h5 class="font-weight-bold text-center mb-5">Account</h5>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href='my_account_page'>
+                                My Account
+                            </a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href='my_membership_page'>
+								My membership
+							</a>
+						</li>
+						<li class="nav-item">
+                            <a class="nav-link" href='favourites'>
+                                Favorites
+                            </a>
+						</li>
+						<li class="nav-item">
+                            <h6 class="font-weight-bold text-dark ml-3 my-3">Settings</h6>
+						</li>
+					</ul>
+				</div>
+			</nav>
+			<div class="col-8 mx-5 my-5">
+
+                <h3 class="text-dark">Settings</h3>
+                <div class="border-top"></div>
+                <div class="container py-2">
+                    <h5 class="text-dark">Change details</h5>
+
+                    <label>Email:   {{ email }}</label>
+
+                    <form method="post" action='update_user_info'>
+                        {% csrf_token %}
+
+                        <div class="form-group">
+                            <label>Name</label>
+                            <input type="text" class="form-control" value="{{ username }}" placeholder="{{ username }}" name="new_name" required>
+                        </div>
+
+                        <div class="row">
+                            <!-- location -->
+                            <div class="col form-group">
+                                <label>Location</label>
+                                <select class="form-control" id='loc' name = 'new_loc' required>
+                                    <option class="text-dark font-weight-bold" disabled>City</option>
+                                    {% for city in city_loc %}
+                                        <option {% if city == location %}selected{% endif %}>{{city}}</option>
+                                    {% endfor %}
+                                    <option class="text-dark font-weight-bold" disabled>Division</option>
+                                    {% for div in div_loc %}
+                                        <option {% if div == location %}selected{% endif %}>{{div}}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+
+                            <!-- sub location -->
+                            <div class="col form-group" id="subloc" >
+                                <label>Sub Location</label>
+                                {% for key, sub_city in city_sub_loc.items %}
+                                    <select class="form-control" id="{{key.split|join:"_" }}" name='new_subloc' required>
+                                        {% for val in sub_city %}
+                                            <option {% if val == sublocation %}selected{% endif %}>{{ val }}</option>
+                                        {% endfor %}
+                                    </select>
+                                {% endfor %}
+
+                                {% for key, sub_div in div_sub_loc.items %}
+                                    <select class="form-control" id="{{key.split|join:"_" }}" name='new_subloc' required>
+                                        {% for val in sub_div %}
+                                            <option {% if val == sublocation %}selected{% endif %}>{{ val }}</option>
+                                        {% endfor %}
+                                    </select>
+                                {% endfor %}
+
+                            </div>
+                        </div>
+
+                        <button class="btn btn-outline-dark" type="submit">Update details</button>
+                    </form>
+
+                </div>
+
+                <div class="container py-2">
+                    <h5 class="text-dark">Change password</h5>
+
+                    <form method="post" action='update_user_password'>
+                        {% csrf_token %}
+
+                        <div class="form-group">
+                            <label>Current Password</label>
+                            <input type="password" class="form-control" placeholder="Current Password" name="Current_Pass" required>
+                        </div>
+                        <div class="form-group">
+                            <label>New Password</label>
+                            <input type="password" class="form-control" placeholder="New Password" name="New_Pass" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Confirm New Password</label>
+                            <input type="password" class="form-control" placeholder="Confirm New Password" name="Confirm_New_Pass" required>
+                        </div>
+                        <label style="color: red">{{ sm_msg }}</label><br>
+                        <button class="btn btn-outline-dark" type="submit">Update details</button>
+                    </form>
+
+                </div>
+			</div>
+
+
+		</div>
+    </div>
+    <!-- body content end -->
+
+    <div style="height: 10rem"></div>
+
+    <!-- footer start -->
+    <footer class="footer mt-auto py-3">
+        <div class="container">
+            <div class="row">
+                <nav class="col-sm">
+                    <p class="h5">Learn More</p>
+                    <ul>
+                        <li class="nav-link">
+                            <a href="sell_fast">How to sell fast</a>
+                        </li>
+                        <li class="nav-link">
+                            <a href="membership">Membership</a>
+                        </li>
+                        <li class="nav-link">
+                            <a href="banner">Banner Advertising</a>
+                        </li>
+                        <li class="nav-link">
+                            <a href="promote_ad">Promote your ad</a>
+                        </li>
+                    </ul>
+                </nav>
+                <nav class="col-sm">
+                    <p class="h5">Help & Support</p>
+                    <ul>
+                        <li class="nav-link">
+                            <a href="faq">FAQ</a>
+                        </li>
+                        <li class="nav-link">
+                            <a href="stay_safe">Stay safe on Bikroy.com</a>
+                        </li>
+                        <li class="nav-link">
+                            <a href="contact_us">Contact us</a>
+                        </li>
+                    </ul>
+                </nav>
+                <nav class="col-sm">
+                    <p class="h5">Social</p>
+                    <ul>
+                        <li class="nav-link">
+                            <a href="http://blog.bikroy.com/" rel="nofollow" target="_blank">Blog</a>
+                        </li>
+                        <li class="nav-link">
+                            <a href="https://www.facebook.com/bikroy" rel="nofollow" target="_blank">Facebook</a>
+                        </li>
+                        <li class="nav-link">
+                            <a href="https://twitter.com/bikroy_com" rel="nofollow" target="_blank">Twitter</a>
+                        </li>
+                        <li class="nav-link">
+                            <a href="http://www.youtube.com/user/BikroyBD" rel="nofollow" target="_blank">YouTube</a>
+                        </li>
+                    </ul>
+                </nav>
+                <nav class="col-sm">
+                    <p class="h5">About us</p>
+                    <ul>
+                        <li class="nav-link">
+                            <a href="about_us">About us</a>
+                        </li>
+                        <li class="nav-link">
+                            <a href="https://bikroy.com/en/shops/careers">Careers</a>
+                        </li>
+                        <li class="nav-link">
+                            <a href="terms_cond">Terms & Conditions</a>
+                        </li>
+                        <li class="nav-link">
+                            <a href="privacy">Privacy Policy</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </footer>
+
+    <!-- footer end -->
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <script>
+        $(document).ready(function() {
+            {% for key, val in city_sub_loc.items %}
+                if ($('#loc option:selected').text() == "{{ key }}"){
+                     $('#{{key.split|join:"_"}}').show();
+                 }
+                 else {
+                      $('#{{key.split|join:"_"}}').remove();
+                 }
+             {% endfor %}
+
+            {% for key, val in div_sub_loc.items %}
+                if ($('#loc option:selected').text() == "{{ key }}"){
+                     $('#{{key.split|join:"_"}}').show();
+                 }
+                 else {
+                      $('#{{key.split|join:"_"}}').remove();
+                 }
+             {% endfor %}
+
+             $('#loc').change(function () {
+                 {% for key, val in city_sub_loc.items %}
+                    if ($('#loc option:selected').text() == "{{ key }}"){
+                         $('#subloc').append(
+                             "{% for sub_key, sub_city in city_sub_loc.items %}"
+                                 + " " + "{% if sub_key == key %}"
+                                 + " " + "<select class='form-control' id='{{sub_key.split|join:"_"}}' name='new_subloc'>"
+                                 + " " +    "{% for val in sub_city %}"
+                                 + " " +        "<option>{{ val }}</option>"
+                                 + " " +    "{% endfor %}"
+                                 + " " + "</select>"
+                                 + " " + "{% endif %} "
+                            + " " +  "{% endfor %}"
+
+                         );
+                     }
+                     else {
+                          $('#{{key.split|join:"_"}}').remove();
+                     }
+                 {% endfor %}
+                 {% for key, val in div_sub_loc.items %}
+                    if ($('#loc option:selected').text() == "{{ key }}"){
+                         $('#subloc').append(
+                             "{% for sub_key, sub_div in div_sub_loc.items %}"
+                                 + " " + "{% if sub_key == key %}"
+                                 + " " + "<select class='form-control' id='{{sub_key.split|join:"_"}}' name='new_subloc'>"
+                                 + " " +    "{% for val in sub_div %}"
+                                 + " " +        "<option>{{ val }}</option>"
+                                 + " " +    "{% endfor %}"
+                                 + " " + "</select>"
+                                 + " " + "{% endif %} "
+                            + " " +  "{% endfor %}"
+
+                         );
+                     }
+                     else {
+                          $('#{{key.split|join:"_"}}').remove();
+                     }
+                 {% endfor %}
+            });
+        });
+    </script>
+{#    <script src="{% static 'js/customMyAccountPage.js' %}"></script>#}
+</body>
+</html>

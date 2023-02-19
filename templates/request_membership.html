@@ -1,0 +1,204 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Bikroy.com</title>
+    <link rel="shortcut icon" href="{% static 'img/title_icon.ico' %}">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css'%}">
+    <link rel="stylesheet" href="{% static 'css/customFooterLinks.css' %}">
+    <link rel="stylesheet" href="{% static 'css/customAllAdsPage.css'%}">
+</head>
+<body>
+	<!-- navigation bar start -->
+    <div>
+        <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+            <a class="navbar-brand"  href='home' style="margin-left: 200px"><img src="{% static 'img/bikroy-com-logo.png' %}" alt="bikroy.com"></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <a class="nav-link text-light" href='all_ads'>All ads</a>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                {% if username %}
+                <ul class="navbar-nav ml-auto" style="margin-right: 105px">
+                {% else %}
+                <ul class="navbar-nav ml-auto" style="margin-right: 200px">
+                {% endif %}
+                    <li class="nav-item">
+                        <a class="nav-link text-light mr-3" href='chat'>chat</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-light mr-3" href='my_account_page'>
+                            {% if username %}
+                            My Account
+                            {% else %}
+                            Log In
+                            {% endif %}
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link btn shadow-sm rounded text-dark post-ad-btn" href='post_ad'>POST YOUR AD</a>
+                    </li>
+                </ul>
+            </div>
+
+            {% if username %}
+            <a class="nav-link text-light" href='signout'>Sign out</a>
+            {% endif %}
+
+        </nav>
+    </div>
+
+    <!-- navigation bar end -->
+
+    <div style="margin-top: 70px"></div>
+    
+    <!-- body content start -->
+    
+    <div class="container border rounded shadow-sm py-5 px-5 body-content text-center" style="width: 50%;">
+        {% if is_member %}
+            <h4>You are already a member</h4>
+            <h5>If you want to change or cancel your membership, please contact us via email</h5>
+            <div class="row">
+                <div class="col-5">
+                    <img width="72" height="72" src="{% static 'img/membership-6-mail.png' %}" style="float: right;">
+                </div>
+                <div class="col-7 mt-2">
+                    <p class="h5" style="position: absolute;">Email us</p><br>
+                    <p class="h5 link" style="position: absolute;"><a href="mailto:support@bikroy.com">support@bikroy.com</a></p>
+                </div>
+            </div>
+        {% else %}
+            <h4 class="text-dark">Please select a membership plan</h4>
+            <form method="post" action='setup_membership'>
+                {% csrf_token %}
+                <div class="row d-block nav-link m-2 p-2 rounded border-top border-bottom post-ad" style="height: 200px;">
+                    <div class="form-check col">
+                        <input class="form-check-input" type="radio" name="chosen_mem_type" id="one_monthRadios" value="one_month" checked>
+                        <label class="form-check-label" for="one_monthRadios">
+                            <h5 class="text-dark">1 month plan:</h5>
+                            <p>Buy and sell new and used mobiles, SIM cards and other mobile accessories in Bangladesh.
+                                Choose from top brands including Apple, OnePlus, Xiaomi and Nokia.</p>
+                            <h6>Charge:</h6>
+                            <p class="post-ad-price">Tk 500</p>
+                        </label>
+                    </div>
+                </div>
+                <div class="d-block nav-link m-2 p-2 rounded border-top border-bottom post-ad" style="height: 200px;">
+                    <div class="form-check col">
+                        <input class="form-check-input" type="radio" name="chosen_mem_type" id="six_monthsRadios" value="six_months">
+                        <label class="form-check-label" for="six_monthsRadios">
+                            <h5 class="text-dark">6 months plan:</h5>
+                            <p>Buy and sell new and used mobiles, SIM cards and other mobile accessories in Bangladesh.
+                                Choose from top brands including Apple, OnePlus, Xiaomi and Nokia.</p>
+                            <h6>Charge:</h6>
+                            <p class="post-ad-price">Tk 2,500</p>
+
+                        </label>
+                    </div>
+                </div>
+                <div class="row d-block nav-link p-2 rounded border-top border-bottom post-ad m-2" style="height: 200px;">
+                    <div class="form-check col">
+                        <input class="form-check-input" type="radio" name="chosen_mem_type" id="one_yearRadios" value="one_year">
+                        <label class="form-check-label" for="one_yearRadios">
+                            <h5 class="text-dark">1 year plan:</h5>
+                            <p>Buy and sell new and used mobiles, SIM cards and other mobile accessories in Bangladesh.
+                                Choose from top brands including Apple, OnePlus, Xiaomi and Nokia.</p>
+                            <h6 class="text-dark">Charge:</h6>
+                            <p class="post-ad-price">Tk 4,500</p>
+                        </label>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn btn-block btn-outline-success">Apply for Membership</button>
+            </form>
+        {% endif %}
+    </div>
+
+    <!-- body content end -->
+
+    <div style="height: 10rem"></div>
+
+    <!-- footer start -->
+    <footer class="footer mt-auto py-3">
+        <div class="container">
+            <div class="row">
+                <nav class="col-sm">
+                    <p class="h5">Learn More</p>
+                    <ul>
+                        <li class="nav-link">
+                            <a href="sell_fast">How to sell fast</a>
+                        </li>
+                        <li class="nav-link">
+                            <a href="membership">Membership</a>
+                        </li>
+                        <li class="nav-link">
+                            <a href="banner">Banner Advertising</a>
+                        </li>
+                        <li class="nav-link">
+                            <a href="promote_ad">Promote your ad</a>
+                        </li>
+                    </ul>
+                </nav>
+                <nav class="col-sm">
+                    <p class="h5">Help & Support</p>
+                    <ul>
+                        <li class="nav-link">
+                            <a href="faq">FAQ</a>
+                        </li>
+                        <li class="nav-link">
+                            <a href="stay_safe">Stay safe on Bikroy.com</a>
+                        </li>
+                        <li class="nav-link">
+                            <a href="contact_us">Contact us</a>
+                        </li>
+                    </ul>
+                </nav>
+                <nav class="col-sm">
+                    <p class="h5">Social</p>
+                    <ul>
+                        <li class="nav-link">
+                            <a href="http://blog.bikroy.com/" rel="nofollow" target="_blank">Blog</a>
+                        </li>
+                        <li class="nav-link">
+                            <a href="https://www.facebook.com/bikroy" rel="nofollow" target="_blank">Facebook</a>
+                        </li>
+                        <li class="nav-link">
+                            <a href="https://twitter.com/bikroy_com" rel="nofollow" target="_blank">Twitter</a>
+                        </li>
+                        <li class="nav-link">
+                            <a href="http://www.youtube.com/user/BikroyBD" rel="nofollow" target="_blank">YouTube</a>
+                        </li>
+                    </ul>
+                </nav>
+                <nav class="col-sm">
+                    <p class="h5">About us</p>
+                    <ul>
+                        <li class="nav-link">
+                            <a href="about_us">About us</a>
+                        </li>
+                        <li class="nav-link">
+                            <a href="https://bikroy.com/en/shops/careers">Careers</a>
+                        </li>
+                        <li class="nav-link">
+                            <a href="terms_cond">Terms & Conditions</a>
+                        </li>
+                        <li class="nav-link">
+                            <a href="privacy">Privacy Policy</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </footer>
+
+    <!-- footer end -->
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+</body>
+</html>

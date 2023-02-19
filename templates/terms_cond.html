@@ -1,0 +1,200 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>bikroy.com</title>
+    <link rel="shortcut icon" href="{% static 'img/title_icon.ico' %}">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css'%}">
+    <link rel="stylesheet" href="{% static 'css/customFooterLinks.css'%}">
+</head>
+<body>
+    <!-- navigation bar start -->
+    <div>
+        <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+            <a class="navbar-brand"  href='home' style="margin-left: 200px"><img src="{% static 'img/bikroy-com-logo.png' %}" alt="bikroy.com"></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <a class="nav-link text-light" href='all_ads'>All ads</a>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                {% if username %}
+                <ul class="navbar-nav ml-auto" style="margin-right: 105px">
+                {% else %}
+                <ul class="navbar-nav ml-auto" style="margin-right: 200px">
+                {% endif %}
+                    <li class="nav-item">
+                        <a class="nav-link text-light mr-3" href='chat'>chat</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-light mr-3" href='my_account_page'>
+                            {% if username %}
+                            My Account
+                            {% else %}
+                            Log In
+                            {% endif %}
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link btn shadow-sm rounded text-dark post-ad-btn" href='post_ad'>POST YOUR AD</a>
+                    </li>
+                </ul>
+            </div>
+
+            {% if username %}
+            <a class="nav-link text-light" href='signout'>Sign out</a>
+            {% endif %}
+
+        </nav>
+    </div>
+
+    <!-- navigation bar end -->
+
+    <div style="margin-top: 70px"></div>
+
+    <!-- body content start -->
+    <div class="container border rounded shadow-sm py-5 px-5 body-content">
+	  	<div class="ui-panel-content ui-panel-block">
+            <div class="row">
+                <div class="col-12 lg-8 lg-offset-2">
+                    <div class="terms">
+                        <h1>Terms &amp; Conditions</h1>
+                            <p>Bikroy.com is a service provided by Saltside Technologies AB (subject to your compliance with the Terms and Conditions set forth below). Please read these Terms and Conditions before using this Web Site.</p>
+                        <h2>General</h2>
+                            <p>Advertisers and users are responsible for ensuring that advertising content, text, images, graphics, video ("Content") uploaded for inclusion on Bikroy.com complies with all applicable laws. Bikroy.com &amp; Saltside Technologies AB assumes no responsibility for any illegality or any inaccuracy of the Content.</p>
+                            <p>The advertisers and user guarantees that his or her Content do not violate any copyright, intellectual property rights or other rights of any person or entity, and agrees to release Bikroy.com and Saltside Technologies AB from all obligations, liabilities and claims arising in connection with the use of (or the inability to use) the service.</p>
+                            <p>Advertisers agree that their Content can may be presented through Bikroy.com's partner sites under the same terms and conditions as on Bikroy.com. </p>
+                        <h2>Copyright</h2>
+                            <p>Advertisers grant Bikroy.com and Saltside Technologies AB a perpetual, royalty-free, irrevocable, non-exclusive right and license to use, reproduce, modify, adapt, publish, translate, create derivative works from and distribute such Content or incorporate such Content into any form, medium, or technology now known or later developed.</p>
+                            <p>The material (including the Content, and any other content, software or services) contained on Bikroy.com are the property of Saltside Technologies AB, its subsidiaries, affiliates and/or third party licensors. Any intellectual property rights, such as copyright, trademarks, service marks, trade names and other distinguishing brands on the Web Site are the property of Saltside Technologies AB. To be clear: No material on this site may be copied, reproduced, republished, installed, posted, transmitted, stored or distributed without written permission from Saltside Technologies AB.</p>
+                        <h2>Watermarks</h2>
+                            <p>All images on Bikroy.com are watermarked, which prevents the images to be used for other purposes, without the consent of the advertiser.</p>
+                        <h2>Safety and images</h2>
+                            <p>Bikroy.com and Saltside Technologies AB reserves the right to change the title of the Content, for editorial purposes. Bikroy.com and Saltside Technologies AB reserves the right not to publish images that are irrelevant or images that violate Bikroy.com's rules.</p>
+                        <h2>Personal</h2>
+                            <p>Bikroy.com and Saltside Technologies AB has the right to cooperate with authorities in the case any Content violates the law. The identity of advertisers, users or buyers may be determined, for example by an ISP. IP addresses may also be registered in order to ensure compliance with the terms and conditions.</p>
+                        <h2>Privacy</h2>
+                            <p>Bikroy.com and Saltside Technologies AB will collect information from Users and Advertisers. It is a condition of use of the Bikroy.com that each User and advertiser consents and authorises Bikroy.com and Saltside Technologies AB to collect and use this information. Bikroy.com and Saltside Technologies AB also reserves the right to disclose it to Company Affiliates and any other person for the purposes of administering, supporting and maintaining Bikroy.com, as well as for improving Bikroy.com, for example by using the information for research, marketing, product development and planning.</p>
+                        <h2>Cookies</h2>
+                            <p>This site uses cookies, which means that you must have cookies enabled on your computer in order for all functionality on this site to work properly. A cookie is a small data file that is written to your hard drive when you visit certain Web sites. Cookie files contain certain information, such as a random number user ID that the site assigns to a visitor to track the pages visited. A cookie cannot read data off your hard disk or read cookie files created by other sites. Cookies, by themselves, cannot be used to find out the identity of any user.</p>
+                        <h2>Email address of users</h2>
+                            <p>Users are required to submit a valid email address, before they are allowed to post advertisements. The email address of the User shall not be publicly displayed and other users are permitted to send email to the User through Bikroy.com.</p>
+                        <h2>Site availability</h2>
+                            <p>Bikroy.com and Saltside Technologies AB does not guarantee continuous or secure access to the Web Site. The Web Site is provided "as is" and as and when available.</p>
+                        <h2>Links to third party websites</h2>
+                            <p>Bikroy.com may contain links or references to other websites ('Third Party Websites'). Bikroy.com or Saltside Technologies AB shall not be responsible for the contents in Third Party Websites. Third Party Websites are not investigated or monitored. In the event the user decides to leave Bikroy.com and access Third Party Sites, the user does so at his/her own risk.</p>
+                        <h2>Paid content and services</h2>
+                            <p>Some content and services of Bikroy.com require payment, including but not limited to, membership packages, posting of ads in select categories, and sale of items through Doorstep Delivery.</p>
+                            <p>Users may purchase ad promotions using vouchers issued or sold by Bikroy.com. Vouchers may not be redeemed for cash. </p>
+                            <p>Advertisers and Users may be required to transmit Paid Content information through a third-party service provider, which may be governed by its own terms of use. Linking to any third party service providers is at the Users' and Advertisers' own risk and Bikroy.com disclaims all liability related thereto. Under no circumstances shall Bikroy.com be obliged to refund any payments made in respect to Paid Content.</p>
+                        <h2>Memberships</h2>
+                            <p>As part of a membership package, Bikroy.com will create a Shop on behalf of the user. A Shop is a dedicated webpage on Bikroy.com, maintained by Bikroy.com, with content provided by the user. Bikroy.com has the right to any content added to the Shop by the user and has the right to remove or not publish the content if it violates any aspect of the Terms and Conditions. </p>
+                            <p>Bikroy.com reserves the right to modify or change membership packages, including the price and the contents of the membership package.</p>
+                            <p>Bikroy.com is not obligated to refund money or services if a membership package is cancelled early, for any reason.</p>
+                        <h2>Doorstep Delivery</h2>
+                            <p>Doorstep Delivery is an eCommerce service provided by Bikroy.com to help Buyers get items delivered to their doorstep. In some cases, the delivery and payments are handled by the Seller, while in other cases they are handled by Bikroy.com. Whether an item will be delivered by the Seller or by Bikroy.com will be specified in the ad.</p>
+                            <p>A Seller has to be a Member on Bikroy.com to opt into the <a href="/en/doorstep-delivery">Doorstep Delivery</a> service. For Seller-related Terms and Conditions, please contact your Field Sales Executive (or refer to the material provided by your Field Sales Executive). To become a member on Bikroy.com, please contact <a href="mailto:support@bikroy.com">support@bikroy.com</a>or 09609555444.</p>
+                            <p>By placing a 'Doorstep Delivery' order, Buyers undertake to purchase the item unless it is materially different from the description provided by the Seller on Bikroy.com. If the delivered item is not as described in the ad, then the Buyer is entitled to a free replacement of the product under Bikroy.com’s Buyer Protection policy.</p>
+                            <p>Bikroy.com does not provide any guarantees that Sellers have been truthful or accurate in their listings, have items in stock, will accept the return of the item, or provide any refunds. Bikroy.com is not responsible for unsatisfactory or delayed performance, losses, damages or delays as a result of items being unavailable or mishandled by Sellers.</p>
+                            <p>Bikroy.com reserves the right to suspend, limit or withdraw access to Bikroy.com and/or Membership of any user who does not comply with these terms.</p>
+                        <h2>Disclaimer</h2>
+                            <p>Bikroy.com and Saltside Technologies AB assume no responsibility what so ever for the use of Bikroy.com and disclaims all responsibility for any injury, claim, liability, or damage of any kind resulting from or arising out of or any way related to (a) any errors on Bikroy.com or the Content, including but not limited to technical errors and typographical errors, (b) any third party web sites or content directly or indirectly accessed through links in Bikroy.com, (c) the unavailability of Bikroy.com, (d) your use of Bikroy.com or the Content, or (e) your use of any equipment (or software) in connection with Bikroy.com</p>
+                        <h2>Indemnification</h2>
+                            <p>Advertisers and users agree to indemnify Bikroy.com &amp; Saltside Technologies AB as well as its officers, directors, employees, agents, from and against all losses, expenses, damages and costs, including attorney's fees, resulting from any violation of this Terms and Conditions (including negligent or wrongful conduct).</p>
+                        <h2>Modifications</h2>
+                            <p>Bikroy.com &amp; Saltside Technologies AB reserves the right to modify these Terms and Conditions. Such modifications shall be effective immediately upon posting on Bikroy.com. You are responsible for the reviewing of such modifications. Your continued access or use of Bikroy.com shall be deemed your acceptance of the modified terms and conditions.</p>
+                        <h2>Governing law</h2>
+                            <p>Bikroy.com is operated under the laws and regulations of Bangladesh.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- body content end -->
+
+    <div style="height: 10rem"></div>
+
+    <!-- footer start -->
+    <footer class="footer mt-auto py-3">
+        <div class="container">
+            <div class="row">
+                <nav class="col-sm">
+                    <p class="h5">Learn More</p>
+                    <ul>
+                        <li class="nav-link">
+                            <a href="sell_fast">How to sell fast</a>
+                        </li>
+                        <li class="nav-link">
+                            <a href="membership">Membership</a>
+                        </li>
+                        <li class="nav-link">
+                            <a href="banner">Banner Advertising</a>
+                        </li>
+                        <li class="nav-link">
+                            <a href="promote_ad">Promote your ad</a>
+                        </li>
+                    </ul>
+                </nav>
+                <nav class="col-sm">
+                    <p class="h5">Help & Support</p>
+                    <ul>
+                        <li class="nav-link">
+                            <a href="faq">FAQ</a>
+                        </li>
+                        <li class="nav-link">
+                            <a href="stay_safe">Stay safe on Bikroy.com</a>
+                        </li>
+                        <li class="nav-link">
+                            <a href="contact_us">Contact us</a>
+                        </li>
+                    </ul>
+                </nav>
+                <nav class="col-sm">
+                    <p class="h5">Social</p>
+                    <ul>
+                        <li class="nav-link">
+                            <a href="http://blog.bikroy.com/" rel="nofollow" target="_blank">Blog</a>
+                        </li>
+                        <li class="nav-link">
+                            <a href="https://www.facebook.com/bikroy" rel="nofollow" target="_blank">Facebook</a>
+                        </li>
+                        <li class="nav-link">
+                            <a href="https://twitter.com/bikroy_com" rel="nofollow" target="_blank">Twitter</a>
+                        </li>
+                        <li class="nav-link">
+                            <a href="http://www.youtube.com/user/BikroyBD" rel="nofollow" target="_blank">YouTube</a>
+                        </li>
+                    </ul>
+                </nav>
+                <nav class="col-sm">
+                    <p class="h5">About us</p>
+                    <ul>
+                        <li class="nav-link">
+                            <a href="about_us">About us</a>
+                        </li>
+                        <li class="nav-link">
+                            <a href="https://bikroy.com/en/shops/careers">Careers</a>
+                        </li>
+                        <li class="nav-link">
+                            <a href="terms_cond">Terms & Conditions</a>
+                        </li>
+                        <li class="nav-link">
+                            <a href="privacy">Privacy Policy</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </footer>
+
+    <!-- footer end -->
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'js/customMyAccountPage.js' %}"></script>
+</body>
+</html>

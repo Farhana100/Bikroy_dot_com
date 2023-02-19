@@ -1,0 +1,296 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>bikroy.com</title>
+    <link rel="shortcut icon" href="{% static 'img/title_icon.ico' %}">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css'%}">
+    <link rel="stylesheet" href="{% static 'css/customIndex.css'%}">
+</head>
+<body>
+    <!-- navigation bar start -->
+    <div>
+        <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+            <a class="navbar-brand"  href='home' style="margin-left: 200px"><img src="{% static 'img/bikroy-com-logo.png' %}" alt="bikroy.com"></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <a class="nav-link text-light" href='all_ads'>All ads</a>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                {% if username %}
+                <ul class="navbar-nav ml-auto" style="margin-right: 105px">
+                {% else %}
+                <ul class="navbar-nav ml-auto" style="margin-right: 200px">
+                {% endif %}
+                    <li class="nav-item">
+                        <a class="nav-link text-light mr-3" href='chat'>chat</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-light mr-3" href='my_account_page'>
+                            {% if username %}
+                            My Account
+                            {% else %}
+                            Log In
+                            {% endif %}
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link btn shadow-sm rounded text-dark post-ad-btn" href='post_ad'>POST YOUR AD</a>
+                    </li>
+                </ul>
+            </div>
+
+            {% if username %}
+            <a class="nav-link text-light" href='signout'>Sign out</a>
+            {% endif %}
+
+        </nav>
+    </div>
+
+    <!-- navigation bar end -->
+
+    <div style="margin-top: 70px"></div>
+    
+    <!-- body content start -->
+    <div  class="container">
+
+        <!-- space for external ad start -->
+        <div class="jumbotron jumbotron-fluid">
+            <div id="carouselIntro" class="carousel slide" data-ride="carousel">
+                <ol class="carousel-indicators">
+                    <li data-target="#carouselIntro" data-slide-to="0" class="active"></li>
+                    <li data-target="#carouselIntro" data-slide-to="1"></li>
+                    <li data-target="#carouselIntro" data-slide-to="2"></li>
+                    <li data-target="#carouselIntro" data-slide-to="3"></li>
+                    <li data-target="#carouselIntro" data-slide-to="4"></li>
+                    <li data-target="#carouselIntro" data-slide-to="5"></li>
+                </ol>
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <img class="d-block w-100" src="{% static 'img/post_img/carouselIntro1.png' %}" alt="First slide" style="height: 400px;">
+                    </div>
+                    <div class="carousel-item">
+                        <img class="d-block w-100" src="{% static 'img/post_img/carouselIntro2.png' %}" alt="Second slide" style="height: 400px;">
+                    </div>
+                    <div class="carousel-item">
+                        <img class="d-block w-100" src="{% static 'img/post_img/carouselIntro3.png' %}" alt="Third slide" style="height: 400px;">
+                    </div>
+                    <div class="carousel-item">
+                        <img class="d-block w-100" src="{% static 'img/post_img/carouselIntro4.png' %}" alt="Fourth slide" style="height: 400px;">
+                    </div>
+                    <div class="carousel-item">
+                        <img class="d-block w-100" src="{% static 'img/post_img/carouselIntro5.png' %}" alt="Fifth slide" style="height: 400px;">
+                    </div>
+                    <div class="carousel-item">
+                        <img class="d-block w-100" src="{% static 'img/post_img/carouselIntro6.png' %}" alt="Sixth slide" style="height: 400px;">
+                    </div>
+                </div>
+                <a class="carousel-control-prev" href="#carouselIntro" role="button" data-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="carousel-control-next" href="#carouselIntro" role="button" data-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                </a>
+            </div>
+        </div>
+        <!-- space for external ad end -->
+
+        <h1 class="text-center">Welcome to Bikroy.com - the largest marketplace in Bangladesh!</h1>
+        <p class="text-center">Buy and sell everything from used cars to mobile phones and computers, or search for property and more in Bangladesh!</p>
+
+
+        <!-- search links start -->
+        <div class="row">
+            
+            <!-- Top Categories links start -->
+            <div class="mt-5 mb-5 col-sm">
+                <p class="font-weight-bold">Browse our top categories:</p>
+                <div class="row ml-auto">
+                    <div class="card ml-2" style="width: 100px; align-items: center;">
+                      <img class="card-img mt-3 mb-3" src="/media/{{ first_img }}" style="height: 36px; width: 36px;" >
+                      <div class="card-text mb-3">
+                           <form method="get" action='all_ads'>
+                                <input type="hidden" name="filter" value="{{first}}" />
+                                <a class ="nav-link  " style = "cursor: pointer;" onclick="this.parentNode.submit();">
+                                    <span>{{first}}</span>
+                                </a>
+                            </form>
+
+                      </div>
+                    </div>
+                    <div class="card ml-2" style="width: 100px; align-items: center;">
+                        <img class="card-img mt-3 mb-3" src="/media/{{ second_img }}" style="height: 36px; width: 36px;" >
+                        <div class="card-text mb-3">
+                            <form method="get" action='all_ads'>
+                                <input type="hidden" name="filter" value="{{second}}" />
+                                <a class ="nav-link " style = "cursor: pointer;" onclick="this.parentNode.submit();">
+                                    <span>{{second}}</span>
+                                </a>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="card ml-2" style="width: 100px; align-items: center;">
+                      <img class="card-img mt-3 mb-3" src="/media/{{ third_img }}" style="height: 36px; width: 36px;">
+                      <div class="card-text mb-3">
+                        <form method="get" action='all_ads'>
+                                <input type="hidden" name="filter" value="{{third}}" />
+                                <a class ="nav-link  " style = "cursor: pointer;" onclick="this.parentNode.submit();">
+                                    <span>{{third}}</span>
+                                </a>
+                            </form>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Top Categories links ends -->
+
+            <!-- search by location start -->
+            <div class="col-sm">
+                <!-- cities start -->
+
+                <p class="mt-5 font-weight-bold">Search by location:</p>
+
+                <div class="dropdown nav-link my-3">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-hashpop="true" aria-expand="false" style="width: 150px">Cities</button>
+                    <div class="dropdown-menu">
+                        {% for city in city_loc %}
+                            <a class="dropdown-item" href='all_ads?filter={{ city }}'>{{ city }}</a>
+                        {% endfor %}
+                    </div>
+                </div>
+
+                <!-- cities end -->
+
+                <!-- divisions start -->
+
+                <div class="dropdown nav-link my-3">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-hashpop="true" aria-expand="false" style="width: 150px">Divisions</button>
+                    <div class="dropdown-menu">
+                        {% for div in div_loc %}
+                        <a class="dropdown-item" href='all_ads?filter={{ div }}'>{{ div }}</a>
+                        {% endfor %}
+                    </div>
+                </div>
+
+                <!-- divisions end -->
+            </div>
+            <!-- search by location start -->
+
+        </div>
+
+        <!-- search links end -->
+
+        <!-- All Categories links start -->
+        <div class="jumbotron row">
+            {% for cat_name,cat_description,cat_image in categories_all %}
+            <div class="card p-1 col-3" style="align-items: center;">
+                <img class="card-img mt-3 mb-3" src=" /media/{{ cat_image }}" style="height: 36px; width: 36px;">
+                <div class="card-text mb-3 mx-3" align="center">
+                    <form method="get" action='all_ads'>
+                        <input type="hidden" name="filter" value="{{cat_name}}" />
+                        <a class ="nav-link " style = "cursor: pointer;" onclick="this.parentNode.submit();">
+                            <span>{{ cat_name }}</span>
+                        </a>
+                    </form>
+                    <p class="text-justify small text-muted">{{ cat_description }}</p>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        <!-- All Categories links ends -->
+
+        <h3 align="center">Do you have something to sell?</h3>
+        <h4 align="center">Post your ad on Bikroy.com</h4>
+        <p align="center"><a class="btn shadow-sm rounded text-dark post-ad-btn" href='post_ad'>POST YOUR AD NOW!</a></p>
+
+    </div>
+    <!-- body content end -->
+
+    <div style="height: 10rem"></div>
+
+    <!-- footer start -->
+    <footer class="footer mt-auto py-3">
+        <div class="container">
+            <div class="row">
+                <nav class="col-sm">
+                    <p class="h5">Learn More</p>
+                    <ul>
+                        <li class="nav-link">
+                            <a href="sell_fast">How to sell fast</a>
+                        </li>
+                        <li class="nav-link">
+                            <a href="membership">Membership</a>
+                        </li>
+                        <li class="nav-link">
+                            <a href="banner">Banner Advertising</a>
+                        </li>
+                        <li class="nav-link">
+                            <a href="promote_ad">Promote your ad</a>
+                        </li>
+                    </ul>
+                </nav>
+                <nav class="col-sm">
+                    <p class="h5">Help & Support</p>
+                    <ul>
+                        <li class="nav-link">
+                            <a href="faq">FAQ</a>
+                        </li>
+                        <li class="nav-link">
+                            <a href="stay_safe">Stay safe on Bikroy.com</a>
+                        </li>
+                        <li class="nav-link">
+                            <a href="contact_us">Contact us</a>
+                        </li>
+                    </ul>
+                </nav>
+                <nav class="col-sm">
+                    <p class="h5">Social</p>
+                    <ul>
+                        <li class="nav-link">
+                            <a href="http://blog.bikroy.com/" rel="nofollow" target="_blank">Blog</a>
+                        </li>
+                        <li class="nav-link">
+                            <a href="https://www.facebook.com/bikroy" rel="nofollow" target="_blank">Facebook</a>
+                        </li>
+                        <li class="nav-link">
+                            <a href="https://twitter.com/bikroy_com" rel="nofollow" target="_blank">Twitter</a>
+                        </li>
+                        <li class="nav-link">
+                            <a href="http://www.youtube.com/user/BikroyBD" rel="nofollow" target="_blank">YouTube</a>
+                        </li>
+                    </ul>
+                </nav>
+                <nav class="col-sm">
+                    <p class="h5">About us</p>
+                    <ul>
+                        <li class="nav-link">
+                            <a href="about_us">About us</a>
+                        </li>
+                        <li class="nav-link">
+                            <a href="https://bikroy.com/en/shops/careers">Careers</a>
+                        </li>
+                        <li class="nav-link">
+                            <a href="terms_cond">Terms & Conditions</a>
+                        </li>
+                        <li class="nav-link">
+                            <a href="privacy">Privacy Policy</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </footer>
+
+    <!-- footer end -->
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+</body>
+</html>

@@ -1,0 +1,233 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>bikroy.com</title>
+    <link rel="shortcut icon" href="{% static 'img/title_icon.ico' %}">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css'%}">
+    <link rel="stylesheet" href="{% static 'css/customFooterLinks.css'%}">
+</head>
+<body>
+    <!-- navigation bar start -->
+    <div>
+        <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+            <a class="navbar-brand"  href='home' style="margin-left: 200px"><img src="{% static 'img/bikroy-com-logo.png' %}" alt="bikroy.com"></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <a class="nav-link text-light" href='all_ads'>All ads</a>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                {% if username %}
+                <ul class="navbar-nav ml-auto" style="margin-right: 105px">
+                {% else %}
+                <ul class="navbar-nav ml-auto" style="margin-right: 200px">
+                {% endif %}
+                    <li class="nav-item">
+                        <a class="nav-link text-light mr-3" href='chat'>chat</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-light mr-3" href='my_account_page'>
+                            {% if username %}
+                            My Account
+                            {% else %}
+                            Log In
+                            {% endif %}
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link btn shadow-sm rounded text-dark post-ad-btn" href='post_ad'>POST YOUR AD</a>
+                    </li>
+                </ul>
+            </div>
+
+            {% if username %}
+            <a class="nav-link text-light" href='signout'>Sign out</a>
+            {% endif %}
+
+        </nav>
+    </div>
+
+    <!-- navigation bar end -->
+
+    <div style="margin-top: 70px"></div>
+
+    <!-- body content start -->
+    <div class="container border rounded shadow-sm py-5 px-5 body-content">
+	  	<div class="container">
+            <div class="">
+                <div class="">
+                    <div class="">
+                        <h1>Advertise your brand on Bikroy.com – the largest local website in Bangladesh!</h1>
+                        <h2>Bikroy.com has millions of visitors every month – which of them do you want to reach?</h2>
+                        <div>
+                            <div>
+                                <img width="500" height="400" src="{% static 'img/banners-1.jpg' %}">
+                            </div>
+                            <p>While the basic service of posting an ad remains free on Bikroy.com, we now offer extra options for businesses who want
+                                to reach new customers quickly and easily. With our banner advertising opportunities, you can <strong>target local
+                                    customers directly and advertise your brand efficiently.</strong></p>
+                            <p><strong>Need help creating your banner?</strong><br>We can help you create one that is uniquely tailored to your brand.</p>
+                            <div class="off-lg t-center">
+                                <hr>
+                                <p>To learn more, please contact us at <a href="mailto:sales@bikroy.com">sales@bikroy.com</a></p>
+                                <hr>
+                            </div>
+                            <ul>
+                                <li>
+                                    <div>
+                                        <img width="110" height="87" src="{% static 'img/banners-2.png' %}">
+                                    </div>
+                                    <div >
+                                        <h3>Target specific customer interests</h3>
+                                        <p>What are your customers interested in? By advertising in one of our many categories, you can get direct access
+                                            to your ideal customers.</p>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div>
+                        <h2>Our Advertising Products</h2>
+                        <div>
+                            <div>
+                                <h3>Leaderboard</h3>
+                                <p>Strategically positioned above the navigation bar on Mobile and below on Desktop, the Leaderboard is viewed by practically
+                                    every visitor of the site. A great choice for building brand awareness for everyone or in specific categories.</p>
+                                <p>Dimensions on Desktop: <strong>970 x 90 px</strong><br>Dimensions on Mobile: <strong>320 x 50 px</strong></p>
+                            </div>
+                            <div class="lg-6">
+                                <img width="468" height="300" src="{% static 'img/banners-3.png' %}">
+                            </div>
+                        </div>
+                        <hr>
+                        <div>
+                            <div>
+                                <h3>Skyscraper</h3>
+                                <p>The Skyscraper is a cost-efficient placement on our search results page, with high reach. A good option for brand building.</p>
+                                <p>Dimensions on Desktop: <strong>160 x 600 px</strong></p>
+                            </div>
+                            <div><img width="468" height="300" src="{% static 'img/banners-4.png' %}">
+                            </div>
+                        </div>
+                        <hr>
+                        <div>
+                        <div>
+                            <h3>Large Mobile Banner</h3>
+                            <p>This large banner has double the height compared to the Leaderboard. And since it's positioned just before pagination links on each search
+                                results page, it's viewed by almost everyone.</p>
+                            <p>Dimensions on Mobile: <strong>320 x 100 px</strong></p>
+                        </div>
+                        <div>
+                            <img width="468" height="300" src="{% static 'img/banners-5.png' %}">
+                        </div>
+                    </div>
+                        <hr>
+                        <div>
+                            <div>
+                                <h3>Square</h3>
+                                <p>The Square is an optimal placement on each of our ad pages. An effective way to reach a specific target audience when they are reading about the ad.</p>
+                                <p>Dimensions on Desktop: <strong>250 x 250 px</strong><br>Dimensions on Mobile: <strong>300 x 250 px</strong></p>
+                            </div>
+                            <div>
+                                <img width="468" height="300" src="{% static 'img/banners-6.png' %}">
+                            </div>
+                        </div>
+                    </div>
+                    <hr><hr>
+                    <div>
+                        <h2><p>To Post banner ads, please contact us at <a href="mailto:sales@bikroy.com">sales@bikroy.com</a></p>
+                        </h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- body content end -->
+
+    <div style="height: 10rem"></div>
+
+    <!-- footer start -->
+    <footer class="footer mt-auto py-3">
+        <div class="container">
+            <div class="row">
+                <nav class="col-sm">
+                    <p class="h5">Learn More</p>
+                    <ul>
+                        <li class="nav-link">
+                            <a href="sell_fast">How to sell fast</a>
+                        </li>
+                        <li class="nav-link">
+                            <a href="membership">Membership</a>
+                        </li>
+                        <li class="nav-link">
+                            <a href="banner">Banner Advertising</a>
+                        </li>
+                        <li class="nav-link">
+                            <a href="promote_ad">Promote your ad</a>
+                        </li>
+                    </ul>
+                </nav>
+                <nav class="col-sm">
+                    <p class="h5">Help & Support</p>
+                    <ul>
+                        <li class="nav-link">
+                            <a href="faq">FAQ</a>
+                        </li>
+                        <li class="nav-link">
+                            <a href="stay_safe">Stay safe on Bikroy.com</a>
+                        </li>
+                        <li class="nav-link">
+                            <a href="contact_us">Contact us</a>
+                        </li>
+                    </ul>
+                </nav>
+                <nav class="col-sm">
+                    <p class="h5">Social</p>
+                    <ul>
+                        <li class="nav-link">
+                            <a href="http://blog.bikroy.com/" rel="nofollow" target="_blank">Blog</a>
+                        </li>
+                        <li class="nav-link">
+                            <a href="https://www.facebook.com/bikroy" rel="nofollow" target="_blank">Facebook</a>
+                        </li>
+                        <li class="nav-link">
+                            <a href="https://twitter.com/bikroy_com" rel="nofollow" target="_blank">Twitter</a>
+                        </li>
+                        <li class="nav-link">
+                            <a href="http://www.youtube.com/user/BikroyBD" rel="nofollow" target="_blank">YouTube</a>
+                        </li>
+                    </ul>
+                </nav>
+                <nav class="col-sm">
+                    <p class="h5">About us</p>
+                    <ul>
+                        <li class="nav-link">
+                            <a href="about_us">About us</a>
+                        </li>
+                        <li class="nav-link">
+                            <a href="https://bikroy.com/en/shops/careers">Careers</a>
+                        </li>
+                        <li class="nav-link">
+                            <a href="terms_cond">Terms & Conditions</a>
+                        </li>
+                        <li class="nav-link">
+                            <a href="privacy">Privacy Policy</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </footer>
+
+    <!-- footer end -->
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'js/customMyAccountPage.js' %}"></script>
+</body>
+</html>
